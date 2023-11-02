@@ -1,0 +1,23 @@
+<section id="lodges">
+  <h2> Pousadas </h2> 
+
+  <% @lodges.each do |l| %>
+    <div>
+      <dl>
+        <dd><%= l.name %></dd>
+        <dd><%= l.headline %></dd>
+        <dd><%= l.description %></dd>
+        <dt>Cidade:</dt> 
+        <dd><%= l.city %></dd>
+        <dt>Estado:</dt>
+        <dd><%= l.state %></dd>
+        <dt>País:</dt>
+        <dd><%= l.country %></dd>
+      </dl>
+    </div>
+  <% end %>
+
+
+
+
+</section>

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'Usuario visita tela inicial' do 
-  it 'e vê o nome da app' do 
+describe 'User visits homepage' do 
+  it 'and see the name of the app' do 
     # Arrange
     # Act
     visit root_path 
@@ -11,7 +11,7 @@ describe 'Usuario visita tela inicial' do
     #expect(page).to have_link('Pousadas', href: root_path)
   end 
 
-  it 'e vê as pousadas cadastradas' do 
+  it 'and see the registered lodges' do 
     #Arrange
     Lodge.create!(name:'Pousada do Mar', headline:'Praia dos Coqueiros', city:'Marataízes',
                   state: 'ES', country: 'Brasil', description: 'Pousada em frente à praia')
@@ -22,8 +22,6 @@ describe 'Usuario visita tela inicial' do
     visit(root_path)
 
     #Assert
-    #garantir que eu veja na tela os galpoes rio e maceio
-    #expect(page).not_to have_content('Não existem galpões cadastrados')
     expect(page).to have_content('Pousada do Mar')
     expect(page).to have_content('Praia dos Coqueiros')
     expect(page).to have_content('Marataízes')
@@ -38,7 +36,7 @@ describe 'Usuario visita tela inicial' do
     expect(page).to have_content('Pousada com vista para a serra')
   end 
 
-  # it 'e não existem galpoes cadastrados' do
+  # it 'and there are no registered lodges' do
   #   #Arrange
 
   #   #Act

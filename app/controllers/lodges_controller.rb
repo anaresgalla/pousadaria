@@ -1,16 +1,17 @@
 class LodgesController < ApplicationController
   before_action :set_lodge, only: [:show, :edit, :update]
-
+ 
   def show
     
   end 
 
-  def new
-    @lodge = Lodge.new
+  def new 
+    @lodge = Lodge.new      
   end
 
   def create     
      @lodge = Lodge.new(lodge_params)
+     @lodge.owner = current_owner
      if @lodge.save     
        redirect_to root_path, notice: 'Pousada cadastrada com sucesso!'
      else 

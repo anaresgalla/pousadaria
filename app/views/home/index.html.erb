@@ -3,20 +3,6 @@
   <div> 
     <%= link_to('Cadastrar Pousada', new_lodge_path) %>
   </div>
-  <div> 
-    <% if user_signed_in? %>
-      <%= link_to 'Sair', destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
-    <% else %>
-      <%= link_to 'Cadastrar Usuário', new_user_registration_path %>
-    <% end %>
-
-    <% if owner_signed_in? %>
-      <%= link_to 'Sair', destroy_owner_session_path, method: :delete, data: { turbo_method: :delete } %>
-    <% else %>
-      <%= link_to 'Cadastrar Proprietário', new_owner_registration_path %>
-    <% end %>
-  </div>
-
   <% @lodges.each do |l| %>
     <div>
       <h3><%= link_to(l.name, lodge_path(l.id)) %></h3>
@@ -31,7 +17,7 @@
   <% end %>
 
   <% if @lodges.empty? %>
-    <p>Não existem pousadas cadastradas</p>
+    <p>Não existem pousadas cadastradas.</p>
   <% end %>
 
 </section>

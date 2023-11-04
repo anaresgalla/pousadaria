@@ -1,0 +1,10 @@
+pt-BR: 
+  available: 'Disponível'
+  unavailable: 'Indisponivel'  
+  activerecord:
+    models:
+      lodge:        
+    attributes:
+      lodge:        
+        status: 'Status'
+        pets: 'Animais de Estimação'

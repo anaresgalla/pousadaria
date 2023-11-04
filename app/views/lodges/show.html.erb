@@ -1,0 +1,38 @@
+<section >
+  <h1><%= @lodge.name %></h1>
+    <h2><%= @lodge.headline %></h2>
+      <h3><%= @lodge.description %></h3>
+        <div>
+          <dl>
+            <dt><strong>Nome:</strong></dt> 
+            <dd><%= @lodge.name %></dd>
+            <dt><strong>Endereço:</strong></dt> 
+            <dd><%= @lodge.full_address %></dd>
+            <dt><strong>Número de quartos:</strong></dt>
+            <dd><%= @lodge.bedrooms %></dd>
+            <dt><strong>Máximo de hóspedes:</strong></dt> 
+            <dd><%= @lodge.max_guests %></dd> 
+            <dt><strong>Acessibilidade para PCD:</strong></dt> 
+            <dd><%= @lodge.disabled_facilities %></dd>
+            <dt><strong>Animais de estimação:</strong></dt> 
+            <dd><%= @lodge.pets %></dd>
+            <dt><strong>Status:</strong></dt>
+            <dd><%= @lodge.status %></dd>
+            <dt><strong>E-mail:</strong></dt> 
+            <dd><%= @lodge.email %></dd>
+            <dt><strong>Telefone:</strong></dt> 
+            <dd><%= @lodge.phone_number %></dd>
+            <dt><strong>Razão Social:</strong></dt> 
+            <dd><%= @lodge.corporate_name %></dd>
+            <dt><strong>CNPJ:</strong></dt> 
+            <dd><%= @lodge.cnpj %></dd>
+            <dt><strong>Modo de Pagamento:</strong></dt> 
+            <dd><%= @lodge.payment_method %></dd>
+            <dt><strong>Políticas de Uso:</strong></dt> 
+            <dd><%= @lodge.policies %></dd>
+          </dl>
+        </div>
+        <div>
+          <strong><%= link_to('Página Inicial', root_path)%></strong>
+        </div>
+</section>

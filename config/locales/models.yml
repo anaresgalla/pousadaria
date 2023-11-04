@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      lodge: 'Pousada'      
+    attributes:
+      lodge:
+        name: "Nome"
+        full_adress: "Endereço"
+        bedrooms: "Número de quartos"
+        max_guests: "Máximo de hóspedes"
+        description: "Descrição"
+        disabled_facilities: "Acessibilidade para pcd"
+        pets: "Animais"
+      

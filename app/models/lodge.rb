@@ -1,4 +1,7 @@
 class Lodge < ApplicationRecord
+  validates :name, :headline, :description, :status, :disabled_facilities,
+            :full_address, :phone_number, :email, :bedrooms, :max_guests,
+            :check_in, :check_out, :corporate_name, :cnpj, :payment_method, :policies, presence: true
 
   enum status: { available: 0, unavailable: 5}
   

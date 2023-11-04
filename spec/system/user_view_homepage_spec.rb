@@ -12,10 +12,16 @@ describe 'User visits homepage' do
 
   it 'and see the registered lodges' do 
     #Arrange
-    Lodge.create!(name:'Pousada do Mar', headline:'Praia dos Coqueiros', 
-                  full_address:'Avenida Beira Mar 1500, Marataízes - ES, Brasil', description: 'Pousada em frente à praia')
-    Lodge.create!(name:'Recanto do Sol', headline:'Serra do Cipó', 
-                  full_address: 'Rua das Emas 17, Belo Horizonte - MG, Brasil', description: 'Pousada com vista para a serra')
+    Lodge.create!(name: 'Pousada do Mar', headline: 'Praia dos Coqueiros', full_address: 'Avenida Beira Mar, Marataízes - ES, Brasil. CEP: 12345-985', 
+                  description: 'Pousada em frente à praia', bedrooms: 5, max_guests: 12, pets: 'yes', 
+                  disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', status: 'available', 
+                  email: 'pousadadomar@gmail.com', phone_number: '28985647114', corporate_name: 'Almeida e Filhos LTDA',
+                  cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", policies: 'Proibido fumar no local. Silêncio a partir das 22h.')
+    Lodge.create!(name: 'Recanto do Sol', headline: 'Serra do Cipó', full_address: 'Rua das Emas, 13, Belo Horizonte - MG, Brasil. CEP: 77345-000', 
+                  description: 'Pousada com vista para a serra', bedrooms: 6, max_guests: 20, pets: 'no', 
+                  disabled_facilities: 'Rampas de acesso', check_in: '17:00', check_out: '14:00', status: 'unavailable', 
+                  email: 'recantodosol@gmail.com', phone_number: '38985694512', corporate_name: 'Fernandes e Oliveira LTDA',
+                  cnpj: '91241057000138', payment_method: "Cartão de débito, Dinheiro e Pix", policies: 'Silêncio a partir das 22h. Proibido visitas.')
 
     #Act
     visit(root_path)

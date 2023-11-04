@@ -1,0 +1,73 @@
+<%= form_with(model: @lodge) do |f| %>
+  <div>
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_area :description %>
+  </div>
+  <div>
+    <%= f.label :headline, 'Cabeçalho'  %>
+    <%= f.text_field :headline %>
+  </div>
+  <div>
+    <%= f.label :full_address, 'Endereço' %>
+    <%= f.text_area :full_address %>
+  </div>
+  <div>
+    <%= f.label :cnpj, 'CNPJ' %>
+    <%= f.text_field :cnpj %>
+  </div>
+  <div>
+    <%= f.label :bedrooms, 'Número de quartos' %>
+    <%= f.number_field :bedrooms %>
+  </div>
+  <div>
+    <%= f.label :max_guests, 'Máximo de hóspedes' %>
+    <%= f.number_field :max_guests %>
+  </div>
+  <div>
+    <%= f.label :pets, 'Animais de estimação' %>
+    <%= f.check_box :pets, id: 'lodge_pets' %>
+  </div>
+  <div>
+    <%= f.label :disabled_facilities, 'Acessibilidade para PCD' %>
+    <%= f.text_area :disabled_facilities %>
+  </div>
+  <div>
+    <%= f.label :status, 'Status' %>
+    <%= f.select :status, Lodge.statuses.keys.map { |status| [status.humanize, status] }, selected: "available" %>
+  </div>
+  <div>
+    <%= f.label :phone_number, 'Telefone' %>
+    <%= f.text_field :phone_number %>
+  </div>
+  <div>
+    <%= f.label :email, 'E-mail' %>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :corporate_name, 'Razão Social' %>
+    <%= f.text_field :corporate_name %>
+  </div>
+  <div>
+    <%= f.label :payment_method, 'Modo de Pagamento' %>
+    <%= f.text_area :payment_method %>
+  </div>
+  <div>
+    <%= f.label :check_in, 'Check In' %>
+    <%= f.time_field :check_in %>
+  </div>
+  <div>
+    <%= f.label :check_out, 'Check Out' %>
+    <%= f.time_field :check_out %>
+  </div>
+  <div>
+    <%= f.label :policies, 'Políticas de Uso' %>
+    <%= f.text_area :policies %>
+  </div>
+  <div>
+    <%= f.submit 'Enviar' %>
+  </div>
+<% end %>

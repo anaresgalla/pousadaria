@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   
   root to: 'home#index'
 
-  resources :lodges, only: [:show, :new, :create]
+  resources :lodges, only: [:show, :new, :create, :edit, :update]
 end

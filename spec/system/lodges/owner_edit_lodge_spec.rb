@@ -69,7 +69,7 @@ describe 'Owner edits a lodge' do
     expect(page).to have_content 'Não foi possível atualizar a pousada.'
   end
 
-  it 'and only the owner can edit the lodge' do
+  it 'and only the owner can edit their lodge' do
     #Arrange
     owner = Owner.create!(name: 'Rogério Sampaio', email: 'rsampaio123@gmail.com', password: '123456')
     owner2 = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')

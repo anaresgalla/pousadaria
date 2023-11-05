@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @lodges = Lodge.all 
-   
+    @lodges = Lodge.all.where(status: 'available')
   end
 end

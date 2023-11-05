@@ -24,7 +24,6 @@ describe 'Owner registers a new lodge' do
     owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
         
     #Act
-    
     login_as(owner)
     visit root_path
     click_on 'Cadastrar Pousada'
@@ -38,8 +37,7 @@ describe 'Owner registers a new lodge' do
     fill_in 'Máximo de hóspedes', with: 12
     fill_in 'Acessibilidade para PCD', with: 'Menu em Braile'
     fill_in 'Check In', with: '15:00'
-    fill_in 'Check Out', with: '12:00'
-    select 'available', from: 'Status'
+    fill_in 'Check Out', with: '12:00'    
     fill_in 'E-mail', with: 'pousadadomar@gmail.com'
     fill_in 'Telefone', with: '28985647114'
     fill_in 'Razão Social', with: 'Almeida e Filhos LTDA'

@@ -6,11 +6,11 @@ describe 'User visits homepage' do
     visit root_path 
     
     # Assert
-    expect(page).to have_content('Pousadas')
+    expect(page).to have_content 'Pousadas'
     #expect(page).to have_link('Pousadas', href: root_path)
   end 
 
-  it 'and see the registered lodges' do 
+  it 'and see only available registered lodges' do 
     #Arrange
     owner1 = Owner.create!(name: 'Rogério Sampaio', email: 'rsampaio123@gmail.com', password: '123456')
     owner2 = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
@@ -31,25 +31,24 @@ describe 'User visits homepage' do
     visit(root_path)
 
     #Assert
-    expect(page).not_to have_content('Não existem pousadas cadastradas')
-    expect(page).to have_content('Pousada do Mar')
-    expect(page).to have_content('Praia dos Coqueiros')
-    expect(page).to have_content('Marataízes')
-    expect(page).to have_content('ES')
-    expect(page).to have_content('Brasil')
+    expect(page).not_to have_content 'Não existem pousadas cadastradas'
+    expect(page).to have_content 'Pousada do Mar'
+    expect(page).to have_content 'Praia dos Coqueiros'
+    expect(page).to have_content 'Marataízes'
+    expect(page).to have_content 'ES'
+    expect(page).to have_content 'Brasil'
 
-    expect(page).to have_content('Recanto do Sol')
-    expect(page).to have_content('Serra do Cipó')
-    expect(page).to have_content('Belo Horizonte')
-    expect(page).to have_content('MG')
-    expect(page).to have_content('Brasil')
-    expect(page).to have_content('Pousada com vista para a serra')
+    expect(page).not_to have_content 'Recanto do Sol' 
+    expect(page).not_to have_content 'Serra do Cipó' 
+    expect(page).not_to have_content 'Belo Horizonte'
+    expect(page).not_to have_content 'MG' 
+    expect(page).not_to have_content 'Pousada com vista para a serra'
   end 
 
   it 'and there are no registered lodges' do
     #Act
     visit(root_path)
     #Assert
-    expect(page).to have_content('Não existem pousadas cadastradas')
+    expect(page).to have_content 'Não existem pousadas cadastradas'
   end 
 end

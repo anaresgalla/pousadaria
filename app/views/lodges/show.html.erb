@@ -34,7 +34,9 @@
               <h4>Quartos Disponíveis:</h4>
               <ul>
                 <% @lodge.rooms.each do |room| %>
-                  <h3><%= link_to(room.name, lodge_room_path(room.id)) %></h3>
+                  <% if room.vacant == true %>
+                    <h3><%= link_to(room.name, lodge_room_path(@lodge, room)) %></h3>
+                  <% end %>  
                 <% end %>
               </ul>
             <% end %>

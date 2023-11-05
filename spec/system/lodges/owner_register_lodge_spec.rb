@@ -83,7 +83,7 @@ describe 'Owner registers a new lodge' do
     owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
     login_as(owner)
     l = Lodge.create(name: 'Pousada do Mar', headline: 'Praia dos Coqueiros', full_address: 'Avenida Beira Mar, Marataízes - ES, Brasil. CEP: 12345-985', 
-                     description: 'Pousada em frente à praia', bedrooms: 5, max_guests: 12, pets: 'yes', 
+                     description: 'Pousada em frente à praia', bedrooms: 5, max_guests: 12, pets: true, 
                      disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', status: 'available', 
                      email: 'pousadadomar@gmail.com', phone_number: '28985647114', corporate_name: 'Almeida e Filhos LTDA',
                      cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 

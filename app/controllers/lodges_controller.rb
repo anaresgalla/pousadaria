@@ -3,7 +3,7 @@ class LodgesController < ApplicationController
  
   def show
     @lodge = Lodge.find(params[:id])
-    @rooms = @lodge.rooms
+    @rooms = @lodge.rooms.where(vacant: true)
   end 
 
   def new 

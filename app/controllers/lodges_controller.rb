@@ -2,7 +2,8 @@ class LodgesController < ApplicationController
   before_action :set_lodge, only: [:show, :edit, :update]
  
   def show
-    
+    @lodge = Lodge.find(params[:id])
+    @rooms = @lodge.rooms
   end 
 
   def new 

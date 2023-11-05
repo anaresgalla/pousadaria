@@ -19,9 +19,9 @@ describe 'Owner edits a lodge' do
 
     #Assert
     expect(page).to have_content 'Editar Pousada'
-    expect(page).to have_field('Nome', with: 'Pousada do Mar')
-    expect(page).to have_field('CNPJ', with: '08945909000124')
-    expect(page).to have_field('E-mail', with: 'pousadadomar@gmail.com')
+    expect(page).to have_field 'Nome', with: 'Pousada do Mar'
+    expect(page).to have_field 'CNPJ', with: '08945909000124'
+    expect(page).to have_field 'E-mail', with: 'pousadadomar@gmail.com'
   end 
 
   it 'and successfully' do

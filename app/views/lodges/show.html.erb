@@ -30,6 +30,14 @@
             <dd><%= @lodge.payment_method %></dd>
             <dt><strong>Políticas de Uso:</strong></dt> 
             <dd><%= @lodge.policies %></dd>
+            <% if @lodge.rooms.any? %>
+              <h4>Quartos Disponíveis:</h4>
+              <ul>
+                <% @lodge.rooms.each do |room| %>
+                  <h3><%= link_to(room.name, lodge_room_path(room.id)) %></h3>
+                <% end %>
+              </ul>
+            <% end %>
           </dl>
         </div>
         <div>

@@ -6,7 +6,9 @@ class Lodge < ApplicationRecord
   enum status: { available: 0, unavailable: 5}
   
   belongs_to :owner
+  has_many :rooms
   validates_uniqueness_of :owner_id
+
 
   def status_translation
     I18n.t("activerecord.attributes.lodge.status.#{status}")

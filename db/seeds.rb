@@ -48,3 +48,34 @@ lodge5 = Lodge.create!(name:'Casa do Velho Chico', headline:'Serra da Canastra',
                         email: 'casadovelhochico@gmail.com', phone_number: '31987412589', corporate_name: 'José Pinheiro Gomes LTDA', 
                         cnpj: '02727106000117', payment_method: "Pix e Dinheiro", 
                         policies: 'Silêncio a partir das 22h. Proibido fumar no local.', owner: owner5)
+
+room1 = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', area: '15 m²', max_guests: 2,
+                     standard_overnight: '150,00 BRL', bathroom: 'true', balcony: 'true', ac: 'true', tv: 'true', 
+                     closet: 'true', disabled_facilities: 'true', safe: 'false', vacant: 'true', lodge: lodge1)
+room2 = Room.create!(name: 'Iemanjá', description: 'Quarto com praia reservada', area: '20 m²', max_guests: 4,
+                     standard_overnight: '350,00 BRL', bathroom: 'true', balcony: 'true', ac: 'true', tv: 'true', 
+                     closet: 'true', disabled_facilities: 'true', safe: 'true', vacant: 'false', lodge: lodge1)
+room3 = Room.create!(name: 'Boitatá', description: 'Quarto com os fundos para a mata', area: '15 m²', max_guests: 3,
+                     standard_overnight: '180,00 BRL', bathroom: 'true', balcony: 'true', ac: 'true', tv: 'yes', 
+                     closet: 'true', disabled_facilities: 'false', safe: 'false', vacant: 'true', lodge: lodge4)
+room4 = Room.create!(name: 'Onça Pintada', description: 'Quarto com varanda sobre o rio', area: '21 m²', max_guests: 5,
+                     standard_overnight: '500,00 BRL', bathroom: 'true', balcony: 'true', ac: 'true', tv: 'true', 
+                     closet: 'true', disabled_facilities: 'true', safe: 'false', vacant: 'false', lodge: lodge3)
+room5 = Room.create!(name: 'Calango', description: 'Quarto com vista para a serra', area: '13 m²', max_guests: 3,
+                     standard_overnight: '200,00 BRL', bathroom: 'true', balcony: 'false', ac: 'true', tv: 'true', 
+                     closet: 'true', disabled_facilities: 'true', safe: 'false', vacant: 'false', lodge: lodge2)
+room6 = Room.create!(name: 'Jacaré do Papo Amarelo', description: 'Quarto com os fundos para a mata', area: '25 m²', max_guests: 5,
+                     standard_overnight: '400,00 BRL', bathroom: 'true', balcony: 'false', ac: 'true', tv: 'false', 
+                     closet: 'false', disabled_facilities: 'true', safe: 'false', vacant: 'true', lodge: lodge3)
+room7 = Room.create!(name: 'Bromélia', description: 'Quarto amplo com varanda', area: '30 m²', max_guests: 6,
+                     standard_overnight: '450,00 BRL', bathroom: 'true', balcony: 'true', ac: 'true', tv: 'true', 
+                     closet: 'true', disabled_facilities: 'true', safe: 'false', vacant: 'false', lodge: lodge2)
+room8 = Room.create!(name: 'Rio Antigo', description: 'Quarto com vista para o Rio São Francisco', area: '17 m²', max_guests: 2,
+                     standard_overnight: '250,00 BRL', bathroom: 'true', balcony: 'false', ac: 'true', tv: 'true', 
+                     closet: 'true', disabled_facilities: 'true', safe: 'true', vacant: 'true', lodge: lodge5)
+room9 = Room.create!(name: 'Água Corrente', description: 'Quarto amplo com varanda', area: '25 m²', max_guests: 5,
+                     standard_overnight: '350,00 BRL', bathroom: 'true', balcony: 'true', ac: 'true', tv: 'true', 
+                     closet: 'false', disabled_facilities: 'true', safe: 'false', vacant: 'false', lodge: lodge5)
+room1 = Room.create!(name: 'Boto Rosa', description: 'Quarto com varanda palafita', area: '20 m²', max_guests: 4,
+                     standard_overnight: '350,00 BRL', bathroom: 'true', balcony: 'true', ac: 'true', tv: 'true', 
+                     closet: 'false', disabled_facilities: 'true', safe: 'false', vacant: 'false', lodge: lodge4) 

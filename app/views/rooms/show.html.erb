@@ -1,0 +1,33 @@
+<section >
+  <h1><%= @room.name %></h1>
+      <h2><%= @room.description %></h2>
+        <div>
+          <dl>
+            <dt><strong>Área:</strong></dt> 
+            <dd><%= @room.area %> m²</dd>
+            <dt><strong>Máximo de hóspedes:</strong></dt> 
+            <dd><%= @room.max_guests %></dd> 
+            <dt><strong>Acessibilidade para PCD:</strong></dt> 
+            <dd><%= @room.disabled_facilities %></dd>
+            <dt><strong>Banheiro:</strong></dt> 
+            <dd><%= @room.bathroom %></dd>
+            <dt><strong>Varanda:</strong></dt> 
+            <dd><%= @room.balcony %></dd>
+            <dt><strong>Ar condicionado:</strong></dt> 
+            <dd><%= @room.ac %></dd>
+            <dt><strong>TV:</strong></dt> 
+            <dd><%= @room.tv %></dd>
+            <dt><strong>Guarda-roupas:</strong></dt> 
+            <dd><%= @room.closet %></dd>
+            <dt><strong>Cofre:</strong></dt> 
+            <dd><%= @room.safe %></dd>
+            <dt><strong>Diária Padrão:</strong></dt> 
+            <dd><%= @room.standard_overnight %></dd>
+            <dt><strong>Disponível:</strong></dt>
+            <dd><%= @room.vacant %></dd>
+          </dl>
+        </div>
+        <div>
+          <strong><%= link_to('Página Inicial', root_path)%></strong>
+        </div>
+</section>

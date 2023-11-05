@@ -1,0 +1,57 @@
+<%= form_with(model: [@room.lodge, @room], local: true) do |f| %>
+  <div>
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_area :description %>
+  </div>
+  <div>
+    <%= f.label :area, 'Área'  %>
+    <%= f.text_field :area %>
+  </div>
+  <div>
+    <%= f.label :max_guests, 'Máximo de Hóspedes' %>
+    <%= f.number_field :max_guests %>
+  </div>
+  <div>
+    <%= f.label :bathroom, 'Banheiro' %>
+    <%= f.check_box :bathroom, id: 'room_bathroom' %>
+  </div>
+  <div>
+    <%= f.label :balcony, 'Sacada' %>
+    <%= f.check_box :balcony, id: 'room_balcony' %>
+  </div>
+  <div>
+    <%= f.label :ac, 'Ar Condicionado' %>
+    <%= f.check_box :ac, id: 'room_ac' %>
+  </div>
+  <div>
+    <%= f.label :tv, 'TV' %>
+    <%= f.check_box :tv, id: 'room_tv' %>
+  </div>
+  <div>
+    <%= f.label :disabled_facilities, 'Acessibilidade para PCD' %>
+    <%= f.check_box :disabled_facilities, id: 'room_disabled_facilities' %>
+  </div>
+  <div>
+    <%= f.label :closet, 'Guarda-roupas' %>
+    <%= f.check_box :closet, id: 'room_closet' %>
+  </div>
+  <div>
+    <%= f.label :safe, 'Cofre' %>
+    <%= f.check_box :safe, id: 'room_safe' %>
+  </div>
+  <div>
+    <%= f.label :vacant, 'Disponível' %>
+    <%= f.check_box :vacant, id: 'room_vacant' %>
+  </div>
+  <div>
+    <%= f.label :standard_overnight, 'Diária Padrão' %>
+    <%= f.text_field :standard_overnight %>
+  </div>
+  <div>
+    <%= f.submit 'Enviar' %>
+  </div>
+<% end %>

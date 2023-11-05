@@ -1,8 +1,7 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show]
+  before_action :set_room, only: [:show, :edit, :update]
   
   def show
-    
   end 
 
   def new
@@ -18,8 +17,20 @@ class RoomsController < ApplicationController
       flash.now[:notice] = 'Quarto não cadastrado.'
       render 'new'
     end
- end
+ end 
 
+  def edit
+  end
+
+  def update
+    if @room.update(room_params)
+      redirect_to lodge_room_path(@room.id), notice: 'Quarto atualizado com sucesso!'
+    else 
+      flash.now[:notice] = 'Não foi possível atualizar o quarto.'
+      render 'edit'
+    end 
+  end 
+ 
   private 
 
   def set_room

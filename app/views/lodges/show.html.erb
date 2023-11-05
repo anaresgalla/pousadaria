@@ -43,11 +43,11 @@
           </dl>
         </div>
         <div>
-          <strong><%= link_to('Página Inicial', root_path)%></strong>
-        </div>
-        <div>
           <% if current_owner == @lodge.owner %>
             <strong><%= link_to('Editar', edit_lodge_path(@lodge.id))%></strong>
           <% end %>
+        </div>
+        <div>
+          <strong><%= link_to('Página Inicial', root_path)%></strong>
         </div>
 </section>

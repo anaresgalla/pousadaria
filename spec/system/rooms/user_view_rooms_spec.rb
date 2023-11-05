@@ -67,7 +67,7 @@ describe 'User sees the rooms of a lodge' do
     #Act
     visit(root_path)
     click_on('Pousada do Mar')
-
+    
     #Assert
     expect(page).to have_content('Pérola Negra')
     expect(page).not_to have_content('Iemanjá')

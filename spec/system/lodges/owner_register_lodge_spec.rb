@@ -55,7 +55,7 @@ describe 'Owner registers a new lodge' do
     expect(page).to have_content 'Pousada cadastrada com sucesso!'
   end 
 
-  it 'with incomplete information' do 
+  it 'and with incomplete information' do 
     #Arrange 
     owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
     #Act
@@ -80,7 +80,7 @@ describe 'Owner registers a new lodge' do
     expect(page).to have_content 'Check In não pode ficar em branco'
   end 
 
-  it 'tries to register another lodge' do 
+  it 'and tries to register more than one lodge' do 
     #Arrange 
     owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
     login_as(owner)
@@ -112,9 +112,7 @@ describe 'Owner registers a new lodge' do
     fill_in 'Modo de Pagamento', with: 'Cartão de crédito, Pix'
     fill_in 'Políticas de Uso', with: 'Proibido fumar no local. Silêncio a partir das 22h.'
     click_on 'Enviar'
-    
-    
-    
+        
     #Assert
     expect(page).to have_content 'Owner já está em uso'
     expect(current_path).not_to have_content 'Pousada do Luar'

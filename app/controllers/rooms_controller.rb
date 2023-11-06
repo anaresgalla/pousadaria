@@ -5,14 +5,16 @@ class RoomsController < ApplicationController
   end 
 
   def new
-    @room = Room.new      
+    @lodge = Lodge.find(params[:lodge_id])
+    @room = @lodge.rooms.new
   end
 
-  def create     
+  def create   
+    @lodge = Lodge.find_by(owner_id: current_owner.id)  
     @room = Room.new(room_params)
-    @room.lodge = @room
+    @room.lodge = @lodge
     if @room.save     
-      redirect_to lodge_path, notice: 'Quarto cadastrado com sucesso!'
+      redirect_to lodge_room_path(@lodge, @room), notice: 'Quarto cadastrado com sucesso!'
     else 
       flash.now[:notice] = 'Quarto não cadastrado.'
       render 'new'

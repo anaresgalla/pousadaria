@@ -11,12 +11,12 @@ describe 'Owner registers a new lodge' do
     login_as(owner)
 
     #Assert
-    expect(page).to have_field('Nome')
-    expect(page).to have_field('Descrição')
-    expect(page).to have_field('Endereço')
-    expect(page).to have_field('Razão Social')
-    expect(page).to have_field('CNPJ')
-    expect(page).to have_field('Modo de Pagamento')
+    expect(page).to have_field 'Nome'
+    expect(page).to have_field 'Descrição'
+    expect(page).to have_field 'Endereço'
+    expect(page).to have_field 'Razão Social'
+    expect(page).to have_field 'CNPJ'
+    expect(page).to have_field 'Modo de Pagamento'
   end
 
   it 'successfully' do
@@ -115,5 +115,4 @@ describe 'Owner registers a new lodge' do
     expect(page).to have_content 'Owner já está em uso'
     expect(current_path).not_to have_content 'Pousada do Luar'
   end 
-
 end

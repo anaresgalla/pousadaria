@@ -45,6 +45,7 @@
         <div>
           <% if current_owner == @lodge.owner %>
             <strong><%= link_to('Editar', edit_lodge_path(@lodge.id))%></strong>
+            <strong><%= link_to('Cadastrar Quarto', new_lodge_room_path(@lodge.id))%></strong>
           <% end %>
         </div>
         <div>

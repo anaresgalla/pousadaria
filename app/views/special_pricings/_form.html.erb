@@ -1,0 +1,14 @@
+<%= form_with model:[@room.lodge, @room, @special_pricing] do |f| %>
+
+  <%= f.label :start_date, "Data Inicial" %>
+  <%= f.date_field :start_date %>
+
+  <%= f.label :end_date, "Data Final" %>
+  <%= f.date_field :end_date %>
+
+  <%= f.label :price, "Preço Especial" %>
+  <%= f.number_field :price %>
+
+  <%= f.submit "Cadastrar Preço Especial" %>
+
+<% end %>

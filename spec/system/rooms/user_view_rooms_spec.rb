@@ -23,7 +23,7 @@ describe 'User sees the rooms of a lodge' do
     
   end 
 
-  it 'sees details of the room' do
+  it 'sees details of the room' do ######## SEES SPECIAL PRICINGS!!!!
     #Arrange
     owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
     lodge = Lodge.create(name: 'Pousada do Mar', headline: 'Praia dos Coqueiros', full_address: 'Avenida Beira Mar, Marataízes - ES, Brasil. CEP: 12345-985', 

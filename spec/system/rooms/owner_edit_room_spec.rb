@@ -16,7 +16,7 @@ describe 'Owner edits a room' do
     
     #Act 
     visit root_path
-    login_as(owner)
+    login_as owner 
     click_on 'Pousada do Mar'
     click_on 'Pérola Negra'
     click_on 'Editar'
@@ -41,7 +41,7 @@ describe 'Owner edits a room' do
                         closet: true, disabled_facilities: true, safe: false, vacant: true, lodge: lodge)
     #Act 
     visit root_path
-    login_as(owner)
+    login_as owner
     click_on 'Pousada do Mar'
     click_on 'Pérola Negra'
     click_on 'Editar'
@@ -68,7 +68,7 @@ describe 'Owner edits a room' do
 
     #Act 
     visit root_path
-    login_as(owner)
+    login_as owner
     click_on 'Pousada do Mar'
     click_on 'Pérola Negra'
     click_on 'Editar'
@@ -95,11 +95,40 @@ describe 'Owner edits a room' do
 
     #Act 
     visit root_path
-    login_as(owner2)
+    login_as owner2 
     click_on 'Pousada do Mar'
     click_on 'Pérola Negra'
     
     #Assert 
     expect(page).not_to have_button 'Editar'
+  end
+
+  it 'and the owner sets special pricings' do
+    #Arrange
+    owner = Owner.create!(name: 'Rogério Sampaio', email: 'rsampaio123@gmail.com', password: '123456')
+    lodge = Lodge.create!(name: 'Pousada do Mar', headline: 'Praia dos Coqueiros', full_address: 'Avenida Beira Mar, Marataízes - ES, Brasil. CEP: 12345-985', 
+                          description: 'Pousada em frente à praia', bedrooms: 5, max_guests: 12, pets: true, 
+                          disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', status: 'available', 
+                          email: 'pousadadomar@gmail.com', phone_number: '28985647114', corporate_name: 'Almeida e Filhos LTDA',
+                          cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
+                          policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
+    room = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', area: '15 m²', max_guests: 2,
+                        standard_overnight: '150,00 BRL', bathroom: true, balcony: true, ac: true, tv: true, 
+                        closet: true, disabled_facilities: true, safe: false, vacant: true, lodge: lodge)
+
+    #Act 
+    visit root_path
+    login_as owner
+    click_on 'Pousada do Mar'
+    click_on 'Pérola Negra'
+    click_on 'Atualizar Preços'
+    fill_in 'Preço Especial', with: '100'
+    fill_in 'Data Inicial', with: 1.day.ago.strftime("%d/%m/%Y")
+    fill_in 'Data Final', with: 1.day.from_now.strftime("%d/%m/%Y")
+    click_on 'Cadastrar Preço Especial'
+
+    #Assert
+    expect(page).to have_content 'Preço especial cadastrado com sucesso!' 
+    expect(page).to have_content '100'
   end
 end

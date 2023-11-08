@@ -8,7 +8,7 @@ RSpec.describe Owner, type: :model do
       #Act
       result = o.description
       #Assert
-      expect(result).to eq ('Julia Almeida - julia@gmail.com')
+      expect(result).to eq 'Julia Almeida - julia@gmail.com'
     end 
   end
 end

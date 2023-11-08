@@ -1,0 +1,12 @@
+<h1>Preço Especial</h1>
+
+<% if @special_pricing.errors.any? %>
+  <p>Verifique o(s) erro(s) abaixo:</p>
+    <ul> 
+      <% @special_pricing.errors.full_messages.each do |msg| %>
+      <li><%= msg %> </li>
+      <% end %>
+    </ul>
+<% end %>
+
+<%= render 'form' %>

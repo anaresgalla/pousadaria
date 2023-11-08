@@ -1,11 +1,13 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update]
+  before_action :set_lodge, only: [:show, :new]
   
   def show
+    @room = Room.all.where(lodge_id: @lodge.id).find(params[:id])
+    @special_pricings = SpecialPricing.all.where(room_id: @room.id)
   end 
 
   def new
-    @lodge = Lodge.find(params[:lodge_id])
     @room = @lodge.rooms.new
   end
 
@@ -35,12 +37,16 @@ class RoomsController < ApplicationController
  
   private 
 
+  def room_params
+    params.require(:room).permit(:name, :description, :area, :max_guests, :standard_overnight,
+                   :bathroom, :balcony, :ac, :tv, :closet, :disabled_facilities, :safe, :vacant)
+  end
+
   def set_room
     @room = Room.find(params[:id])
   end
   
-  def room_params
-    params.require(:room).permit(:name, :description, :area, :max_guests, :standard_overnight,
-                   :bathroom, :balcony, :ac, :tv, :closet, :disabled_facilities, :safe, :vacant)
+  def set_lodge
+    @lodge = Lodge.find(params[:lodge_id])
   end
 end

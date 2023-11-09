@@ -22,15 +22,15 @@
             <dt><strong>Cofre:</strong></dt> 
             <dd><%= @room.safe %></dd>
             <dt><strong>Diária Padrão:</strong></dt> 
-            <dd><%= @room.standard_overnight %></dd>
+            <dd><%= number_to_currency(@room.updated_standard_overnight, unit: "R$ ") %></dd>
 
             <% if @special_pricings.any? %>
-              <h3>Preço Especial</h3>
+              <p><strong>Preço Especial</strong></p>
               <% @special_pricings.each do |special_pricing| %>
                 <div>
                   <strong>Data Inicial:</strong> <%= special_pricing.start_date.strftime("%d/%m/%y") %>
                   <strong>Data Final:</strong> <%= special_pricing.end_date.strftime("%d/%m/%y") %>
-                  <strong>Preço Especial:</strong><%= special_pricing.price %>BRL
+                  <strong>Preço Especial:</strong><%= special_pricing.price %> BRL
                 </div>
               <% end %>
             <% end %>

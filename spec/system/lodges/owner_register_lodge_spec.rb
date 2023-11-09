@@ -29,9 +29,13 @@ describe 'Owner registers a new lodge' do
     click_on 'Cadastrar Pousada'
     fill_in 'Nome', with: 'Pousada do Mar'
     fill_in 'Descrição', with: 'Pousada em frente à praia'
-    fill_in 'Cabeçalho', with: 'Praia dos Coqueiros'
+    fill_in 'Endereço', with: 'Avenida Beira Mar, 1500' 
+    fill_in 'Bairro', with: 'Coqueiros' 
+    fill_in 'Cidade', with: 'Marataízes' 
+    fill_in 'Estado', with: 'ES' 
+    fill_in 'País', with: 'Brasil' 
+    fill_in 'CEP', with: '12345-985'
     fill_in 'CNPJ', with: '08945909000124'
-    fill_in 'Endereço', with: 'Avenida Beira Mar, Marataízes - ES, Brasil. CEP: 12345-985'
     find('#lodge_pets', visible: true).check
     fill_in 'Número de quartos', with: 5
     fill_in 'Máximo de hóspedes', with: 12
@@ -47,9 +51,8 @@ describe 'Owner registers a new lodge' do
 
     #Assert
     expect(current_path).to eq root_path
-    expect(page).to have_content 'Pousada do Mar' 
-    expect(page).to have_content 'Pousada em frente à praia'    
-    expect(page).to have_content 'Avenida Beira Mar, Marataízes - ES, Brasil. CEP: 12345-985'    
+    expect(page).to have_content 'Pousada do Mar'    
+    expect(page).to have_content 'Marataízes'    
     expect(page).to have_content 'Pousada cadastrada com sucesso!'
   end 
 
@@ -82,11 +85,11 @@ describe 'Owner registers a new lodge' do
     #Arrange 
     owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
     login_as(owner)
-    l = Lodge.create(name: 'Pousada do Mar', headline: 'Praia dos Coqueiros', full_address: 'Avenida Beira Mar, Marataízes - ES, Brasil. CEP: 12345-985', 
-                     description: 'Pousada em frente à praia', bedrooms: 5, max_guests: 12, pets: true, 
-                     disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', status: 'available', 
-                     email: 'pousadadomar@gmail.com', phone_number: '28985647114', corporate_name: 'Almeida e Filhos LTDA',
-                     cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
+    l = Lodge.create(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', neighborhood: 'Coqueiros', city: 'Marataízes',
+                     state: 'ES', country: 'Brasil', zip_code: '12345-985', description: 'Pousada em frente à praia', bedrooms: 5, 
+                     max_guests: 12, pets: true, disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
+                     status: 'available', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
+                     corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
                      policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
 
     #Act
@@ -94,9 +97,12 @@ describe 'Owner registers a new lodge' do
     click_on 'Cadastrar Pousada'
     fill_in 'Nome', with: 'Pousada do Luar'
     fill_in 'Descrição', with: 'Pousada em frente à praia'
-    fill_in 'Cabeçalho', with: 'Praia dos Coqueiros'
     fill_in 'CNPJ', with: '08945909000124'
-    fill_in 'Endereço', with: 'Avenida Beira Mar, Marataízes - ES, Brasil. CEP: 12345-985'
+    fill_in 'Endereço', with: 'Avenida Beira Mar, 2569'
+    fill_in 'Cidade', with: 'Marataízes' 
+    fill_in 'Estado', with: 'ES' 
+    fill_in 'País', with: 'Brasil' 
+    fill_in 'CEP', with: '12345-985'
     find('#lodge_pets', visible: true).check
     fill_in 'Número de quartos', with: 5
     fill_in 'Máximo de hóspedes', with: 12
@@ -104,7 +110,7 @@ describe 'Owner registers a new lodge' do
     fill_in 'Check In', with: '15:00'
     fill_in 'Check Out', with: '12:00'
     select 'available', from: 'Status'
-    fill_in 'E-mail', with: 'pousadadomar@gmail.com'
+    fill_in 'E-mail', with: 'pousadadoluar@gmail.com'
     fill_in 'Telefone', with: '28985647114'
     fill_in 'Razão Social', with: 'Almeida e Filhos LTDA'
     fill_in 'Modo de Pagamento', with: 'Cartão de crédito, Pix'

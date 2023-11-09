@@ -5,14 +5,7 @@
   </div>
   <% @lodges.each do |l| %>
     <div>
-      <h3><%= link_to(l.name, lodge_path(l.id)) %></h3>
-        <dl>
-          <dd><%= l.name %></dd>
-          <dd><%= l.headline %></dd>
-          <dd><%= l.description %></dd>
-          <dt>Localização:</dt> 
-          <dd><%= l.full_address %></dd>
-        </dl>
+      <h3><%= link_to(l.name, lodge_path(l.id)) %>, <%= l.city %></h3>
     </div>
   <% end %>
 

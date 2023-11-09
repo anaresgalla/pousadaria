@@ -4,11 +4,11 @@ describe 'Owner edits a lodge' do
   it 'from the details page' do
     #Arrange
     owner = Owner.create!(name: 'Rogério Sampaio', email: 'rsampaio123@gmail.com', password: '123456')
-    lodge = Lodge.create!(name: 'Pousada do Mar', headline: 'Praia dos Coqueiros', full_address: 'Avenida Beira Mar, Marataízes - ES, Brasil. CEP: 12345-985', 
-                          description: 'Pousada em frente à praia', bedrooms: 5, max_guests: 12, pets: true, 
-                          disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', status: 'available', 
-                          email: 'pousadadomar@gmail.com', phone_number: '28985647114', corporate_name: 'Almeida e Filhos LTDA',
-                          cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
+    lodge = Lodge.create!(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', neighborhood: 'Coqueiros', city: 'Marataízes',
+                          state: 'ES', country: 'Brasil', zip_code: '12345-985', description: 'Pousada em frente à praia', bedrooms: 5, 
+                          max_guests: 12, pets: true, disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
+                          status: 'available', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
+                          corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
                           policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
     
     #Act 
@@ -27,11 +27,11 @@ describe 'Owner edits a lodge' do
   it 'and successfully' do
     #Arrange 
     owner = Owner.create!(name: 'Rogério Sampaio', email: 'rsampaio123@gmail.com', password: '123456')
-    lodge = Lodge.create!(name: 'Pousada do Mar', headline: 'Praia dos Coqueiros', full_address: 'Avenida Beira Mar, Marataízes - ES, Brasil. CEP: 12345-985', 
-                          description: 'Pousada em frente à praia', bedrooms: 5, max_guests: 12, pets: true, 
-                          disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', status: 'available', 
-                          email: 'pousadadomar@gmail.com', phone_number: '28985647114', corporate_name: 'Almeida e Filhos LTDA',
-                          cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
+    lodge = Lodge.create!(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', neighborhood: 'Coqueiros', city: 'Marataízes',
+                          state: 'ES', country: 'Brasil', zip_code: '12345-985', description: 'Pousada em frente à praia', bedrooms: 5, 
+                          max_guests: 12, pets: true, disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
+                          status: 'available', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
+                          corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
                           policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
     
     #Act 
@@ -50,11 +50,11 @@ describe 'Owner edits a lodge' do
   it 'and keeps the mandatory fields' do
     #Arrange
     owner = Owner.create!(name: 'Rogério Sampaio', email: 'rsampaio123@gmail.com', password: '123456')
-    lodge = Lodge.create!(name: 'Pousada do Mar', headline: 'Praia dos Coqueiros', full_address: 'Avenida Beira Mar, Marataízes - ES, Brasil. CEP: 12345-985', 
-                          description: 'Pousada em frente à praia', bedrooms: 5, max_guests: 12, pets: true, 
-                          disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', status: 'available', 
-                          email: 'pousadadomar@gmail.com', phone_number: '28985647114', corporate_name: 'Almeida e Filhos LTDA',
-                          cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
+    lodge = Lodge.create!(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', neighborhood: 'Coqueiros', city: 'Marataízes',
+                          state: 'ES', country: 'Brasil', zip_code: '12345-985', description: 'Pousada em frente à praia', bedrooms: 5, 
+                          max_guests: 12, pets: true, disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
+                          status: 'available', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
+                          corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
                           policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
 
     #Act 
@@ -73,11 +73,11 @@ describe 'Owner edits a lodge' do
     #Arrange
     owner = Owner.create!(name: 'Rogério Sampaio', email: 'rsampaio123@gmail.com', password: '123456')
     owner2 = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
-    lodge = Lodge.create!(name: 'Pousada do Mar', headline: 'Praia dos Coqueiros', full_address: 'Avenida Beira Mar, Marataízes - ES, Brasil. CEP: 12345-985', 
-                          description: 'Pousada em frente à praia', bedrooms: 5, max_guests: 12, pets: true, 
-                          disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', status: 'available', 
-                          email: 'pousadadomar@gmail.com', phone_number: '28985647114', corporate_name: 'Almeida e Filhos LTDA',
-                          cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
+    lodge = Lodge.create!(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', neighborhood: 'Coqueiros', city: 'Marataízes',
+                          state: 'ES', country: 'Brasil', zip_code: '12345-985', description: 'Pousada em frente à praia', bedrooms: 5, 
+                          max_guests: 12, pets: true, disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
+                          status: 'available', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
+                          corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
                           policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
 
     #Act 

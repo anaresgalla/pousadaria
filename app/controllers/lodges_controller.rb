@@ -40,8 +40,8 @@ class LodgesController < ApplicationController
   end
 
   def lodge_params
-    params.require(:lodge).permit(:name, :headline, :description, :status, :disabled_facilities,
-                                  :full_address, :phone_number, :pets, :email, :bedrooms, :max_guests,
+    params.require(:lodge).permit(:name, :description, :status, :disabled_facilities, :address, :neighborhood, :city,
+                                  :state, :country, :zip_code, :phone_number, :pets, :email, :bedrooms, :max_guests,
                                   :check_in, :check_out, :corporate_name, :cnpj, :payment_method, :policies)
   end
 end

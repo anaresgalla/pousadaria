@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_08_002501) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_08_194617) do
   create_table "lodges", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "headline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "bedrooms"
@@ -26,12 +25,17 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_08_002501) do
     t.integer "status", default: 0
     t.string "email"
     t.string "phone_number"
-    t.string "full_address"
     t.string "corporate_name"
     t.string "cnpj"
     t.text "payment_method"
     t.text "policies"
     t.integer "owner_id", null: false
+    t.string "address"
+    t.string "neighborhood"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "zip_code"
     t.index ["owner_id"], name: "index_lodges_on_owner_id"
   end
 

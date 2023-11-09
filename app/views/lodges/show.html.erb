@@ -1,13 +1,16 @@
 <section >
   <h1><%= @lodge.name %></h1>
-    <h2><%= @lodge.headline %></h2>
-      <h3><%= @lodge.description %></h3>
+      <h2><%= @lodge.description %></h3>
         <div>
           <dl>
             <dt><strong>Nome:</strong></dt> 
             <dd><%= @lodge.name %></dd>
             <dt><strong>Endereço:</strong></dt> 
-            <dd><%= @lodge.full_address %></dd>
+            <dd><%= @lodge.address %></dd> 
+            <dd><%= @lodge.city %>, <%= @lodge.neighborhood %></dd>
+            <dd><%= @lodge.state %>, <%= @lodge.country %></dd>
+            <dt><strong>CEP:</strong></dt>
+            <dd><%= @lodge.zip_code %></dd>
             <dt><strong>Número de quartos:</strong></dt>
             <dd><%= @lodge.bedrooms %></dd>
             <dt><strong>Máximo de hóspedes:</strong></dt> 

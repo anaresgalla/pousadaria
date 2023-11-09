@@ -3,13 +3,33 @@
   <div> 
     <%= link_to('Cadastrar Pousada', new_lodge_path) %>
   </div>
-  <% @lodges.each do |l| %>
-    <div>
-      <h3><%= link_to(l.name, lodge_path(l.id)) %>, <%= l.city %></h3>
-    </div>
-  <% end %>
 
-  <% if @lodges.empty? %>
+  <div id="city-menu">
+      <h3>Cidades:</h3>
+      <ul>
+        <% Lodge.distinct.pluck(:city).sort.each do |city| %>
+          <li><%= link_to(city, lodges_city_path(city)) %></li>
+        <% end %>
+      </ul>
+  </div>
+
+    <h3>Pousadas mais Recentes:</h3>
+      <ul>
+        <% @recent_lodges.each do |rl| %>
+          <div>
+            <h4><%= link_to(rl.name, lodge_path(rl.id)) %>, <%= rl.city %></h4>
+          </div>
+        <% end %>
+      </ul>
+    <h3>Outras Pousadas:</h3>
+      <ul>
+        <% @other_lodges.each do |ol| %>
+          <div>
+            <h4><%= link_to(ol.name, lodge_path(ol.id)) %>, <%= ol.city %></h4>
+          </div>
+        <% end %>
+      </ul>
+  <% if @recent_lodges.empty? && @other_lodges.empty? %>
     <p>Não existem pousadas cadastradas.</p>
   <% end %>
 </section>

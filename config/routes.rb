@@ -4,9 +4,19 @@ Rails.application.routes.draw do
   
   root to: 'home#index'
 
+  get 'lodges_city/:city', to: 'lodges#city', as: :lodges_city
+
+
   resources :lodges, only: [:show, :new, :create, :edit, :update] do
     resources :rooms, only: [:show, :new, :create, :edit, :update] do
       resources :special_pricings, only: [:new, :create]
     end
   end
+
+
+  # resources :lodges, only: [:show, :new, :create, :edit, :update] do
+  #   resources :rooms, only: [:show, :new, :create, :edit, :update] do
+  #     resources :special_pricings, only: [:new, :create]
+  #   end
+  # end
 end

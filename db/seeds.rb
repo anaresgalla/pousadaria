@@ -13,6 +13,7 @@ owner2 = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', pas
 owner3 = Owner.create!(name: 'Márcia Gomes', email: 'mrsgomes@gmail.com', password: '123456')
 owner4 = Owner.create!(name: 'Laís Nunes', email: 'lanunes@gmail.com', password: '123456')
 owner5 = Owner.create!(name: 'Monica Resende', email: 'monicares@gmail.com', password: '123456')
+owner6 = Owner.create!(name: 'Leandro Mesquita', email: 'leandro@gmail.com', password: '123456')
 
 lodge1 = Lodge.create!(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', neighborhood: 'Coqueiros', city: 'Marataízes',
                        state: 'ES', country: 'Brasil', zip_code: '12345-985', description: 'Pousada em frente à praia', bedrooms: 5, 
@@ -48,6 +49,12 @@ lodge5 = Lodge.create!(name:'Casa do Velho Chico', address:'Rua do Marmelo, 861'
                        email: 'casadovelhochico@gmail.com', phone_number: '31987412589', corporate_name: 'José Pinheiro Gomes LTDA', cnpj: '02727106000117', 
                        payment_method: "Pix e Dinheiro", policies: 'Silêncio a partir das 22h. Proibido fumar no local.', owner: owner5)
 
+lodge6 = Lodge.create!(name:'Jam Session Inn', address:'Avenida Independência, 458', neighborhood:'Centro', city: 'Belo Horizonte', state: 'MG', 
+                       country: 'Brasil', zip_code: '34321-012', description: 'Pousada pra quem curte um som legal!', bedrooms: 5, max_guests: 20, 
+                       pets: false, disabled_facilities: 'Rampas de acesso', check_in: '12:00', check_out: '14:00', status: 'available', 
+                       email: 'jamsession@gmail.com', phone_number: '31998512589', corporate_name: 'Mesquita e Resgalla LTDA', cnpj: '56127836000106', 
+                       payment_method: "Pix e Dinheiro", policies: 'Silêncio a partir das 22h. Proibido fumar no local.', owner: owner6)
+
 room1 = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', area: '15', max_guests: 2,
                      standard_overnight: '150,00 BRL', bathroom: true, balcony: true, ac: true, tv: true, 
                      closet: true, disabled_facilities: true, safe: false, vacant: true, lodge: lodge1)
@@ -78,6 +85,10 @@ room9 = Room.create!(name: 'Água Corrente', description: 'Quarto amplo com vara
 room10 = Room.create!(name: 'Boto Rosa', description: 'Quarto com varanda palafita', area: '20', max_guests: 4,
                      standard_overnight: '350,00 BRL', bathroom: true, balcony: true, ac: true, tv: true, 
                      closet: false, disabled_facilities: true, safe: false, vacant: false, lodge: lodge4) 
+room11 = Room.create!(name: 'ACDC', description: 'Quarto com varanda', area: '17', max_guests: 4,
+                      standard_overnight: '120,00 BRL', bathroom: true, balcony: true, ac: true, tv: true, 
+                      closet: false, disabled_facilities: true, safe: false, vacant: true, lodge: lodge6) 
+                      
 special_pricing1 = SpecialPricing.create!(start_date: 1.day.ago, end_date: 1.day.from_now, price: 200, room: room1)
 special_pricing2 = SpecialPricing.create!(start_date: 2.days.from_now, end_date: 10.days.from_now, price: 100, room: room1)
 special_pricing3 = SpecialPricing.create!(start_date: 2.weeks.from_now, end_date: 3.weeks.from_now, price: 75, room: room1)

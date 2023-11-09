@@ -33,6 +33,12 @@ class LodgesController < ApplicationController
     end 
   end 
 
+  def city
+    @city = params[:city]
+    lodge_city = Lodge.where(city: @city).pluck(:city)
+    @available_lodges = Lodge.where(status: 'available').where(city: lodge_city).order(:name)
+  end
+
   private 
 
   def set_lodge

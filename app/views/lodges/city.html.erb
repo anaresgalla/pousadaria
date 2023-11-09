@@ -1,0 +1,16 @@
+<h2><%= @city %></h2>
+<h3>Pousadas disponíveis:</h3>
+
+<div>
+  <ul>
+    <% @available_lodges.each do |al| %>
+        <li>
+          <div class="lodge-name"><%= link_to al.name, al %></div>
+        </li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <%= link_to 'Página Inicial', root_path %>
+</div>

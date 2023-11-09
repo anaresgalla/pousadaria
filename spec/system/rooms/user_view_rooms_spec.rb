@@ -23,7 +23,7 @@ describe 'User sees the rooms of a lodge' do
     
   end 
 
-  it 'sees details of the room' do 
+  it 'sees details of the room except for the special pricings' do 
     #Arrange
     owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
     lodge = Lodge.create(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', neighborhood: 'Coqueiros', city: 'Marataízes',
@@ -47,6 +47,7 @@ describe 'User sees the rooms of a lodge' do
     expect(page).to have_content 'Banheiro: true'
     expect(page).to have_content 'Área: 15 m²' 
     expect(page).to have_content 'Diária Padrão: R$ 100,00'
+    expect(page).not_to have_content 'Preço Especial'
   end 
 
   it 'and sees only vancant rooms' do

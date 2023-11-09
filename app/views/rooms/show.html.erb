@@ -24,7 +24,7 @@
             <dt><strong>Diária Padrão:</strong></dt> 
             <dd><%= number_to_currency(@room.updated_standard_overnight, unit: "R$ ") %></dd>
 
-            <% if @special_pricings.any? %>
+            <% if current_owner == @lodge.owner && @special_pricings.any? %>
               <p><strong>Preço Especial</strong></p>
               <% @special_pricings.each do |special_pricing| %>
                 <div>

@@ -3,7 +3,11 @@
   <p>Foram encontrados <%= @lodges.count %> resultados para "<%= params[:q] %>"':</p>
   <ul>
     <% @lodges.each do |lodge| %>
-      <li><%= link_to "#{lodge.name}, #{lodge.neighborhood}, #{lodge.city}", lodge_path(lodge) %></li>
+      <li>
+        <%= link_to lodge.name, lodge_path(lodge) %>,
+        <%= lodge.neighborhood %>,
+        <%= lodge.city %>
+      </li>
     <% end %>
   </ul>
 <% else %>

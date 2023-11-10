@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   
   root to: 'home#index'
+  get 'search', to:"home#search"
 
   get 'lodges_city/:city', to: 'lodges#city', as: :lodges_city
 
@@ -12,11 +13,4 @@ Rails.application.routes.draw do
       resources :special_pricings, only: [:new, :create]
     end
   end
-
-
-  # resources :lodges, only: [:show, :new, :create, :edit, :update] do
-  #   resources :rooms, only: [:show, :new, :create, :edit, :update] do
-  #     resources :special_pricings, only: [:new, :create]
-  #   end
-  # end
 end

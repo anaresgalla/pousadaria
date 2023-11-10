@@ -39,7 +39,7 @@ describe 'User sees the rooms of a lodge' do
 
     #Act
     visit root_path 
-    click_on 'Pousada do Mar'
+    click_on 'Pousada do Mar' 
     click_on 'Pérola Negra'
     
     #Assert

@@ -1,0 +1,6 @@
+<h1>Resultados da busca</h1>
+<ul>
+  <% @lodges.each do |lodge| %>
+    <li><%= lodge.name %>, <%= lodge.neighborhood %>, <%= lodge.city %></li>
+  <% end %>
+</ul>

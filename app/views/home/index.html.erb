@@ -1,5 +1,13 @@
 <section id="lodges">
   <h2> Pousadas Disponíveis</h2> 
+  <div>
+    <%= form_with url: search_path, method: :get do %>
+      <%= label_tag :q, 'Busca:' %>
+      <%= text_field_tag :q %>
+      <%= submit_tag 'Pesquisar' %>
+    <% end %>
+  </div>
+
   <div> 
     <%= link_to('Cadastrar Pousada', new_lodge_path) %>
   </div>

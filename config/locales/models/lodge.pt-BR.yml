@@ -1,0 +1,32 @@
+pt-BR: 
+  available: 'Disponível'
+  unavailable: 'Indisponivel'  
+  activerecord:
+    models:
+      lodge: 
+        one: 'Pousada'
+        other: 'Pousadas'       
+    attributes:
+      lodge:  
+        name: 'Nome' 
+        description: 'Descrição'  
+        bedrooms: 'Quartos'
+        max_guests: 'Máximo de hóspedes'   
+        pets: 'Aceita Animais de Estimação'
+        disabled_facilities: 'Acesso para PcD'
+        status: 'Status'
+        email: 'E-mail'
+        phone_number: 'Telefone'
+        corporate_name: 'Razão Social'
+        cnpj: 'CNPJ'
+        payment_method: 'Modo de Pagamento'
+        address: 'Endereço'
+        policies: 'Políticas de Uso'
+        check_in: 'Check In'
+        check_out: 'Check Out'        
+        city: 'Cidade'
+        state: 'Estado'
+        country: 'País'
+        zip_code: 'CEP'
+        neighborhood: 'Bairro'
+    

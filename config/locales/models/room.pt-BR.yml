@@ -1,0 +1,22 @@
+pt-BR:
+  activerecord:
+    models:
+      room:   
+        one: 'Quarto'
+        other: 'Quartos'     
+    attributes:
+      room:  
+        name: 'Nome'      
+        description: 'Descrição'
+        area: 'Área'
+        max_guests: 'Máximo de Hóspedes'
+        standard_overnight: 'Diária Padrão'
+        bathroom: 'Banheiro'
+        balcony: 'Varanda'
+        ac: 'Ar Condicionado'
+        tv: 'TV'
+        closet: 'Guarda-roupas'
+        disabled_facilities: 'Acesso para PcD'
+        safe: 'Cofre'
+        vacant: 'Disponível'
+        

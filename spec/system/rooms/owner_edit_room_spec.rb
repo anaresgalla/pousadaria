@@ -6,13 +6,13 @@ describe 'Owner edits a room' do
     owner = Owner.create!(name: 'Rogério Sampaio', email: 'rsampaio123@gmail.com', password: '123456')
     lodge = Lodge.create!(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', neighborhood: 'Coqueiros', city: 'Marataízes',
                           state: 'ES', country: 'Brasil', zip_code: '12345-985', description: 'Pousada em frente à praia', bedrooms: 5, 
-                          max_guests: 12, pets: true, disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
-                          status: 'available', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
+                          max_guests: 12, pets: 'Sim', disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
+                          status: 'Ativa', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
                           corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
                           policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
     room = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', area: '15 m²', max_guests: 2,
-                        standard_overnight: '150,00 BRL', bathroom: true, balcony: true, ac: true, tv: true, 
-                        closet: true, disabled_facilities: true, safe: false, vacant: true, lodge: lodge)
+                        standard_overnight: '150,00 BRL', bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
+                        closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', vacant: 'Disponível', lodge: lodge)
     
     #Act 
     visit root_path
@@ -32,13 +32,13 @@ describe 'Owner edits a room' do
     owner = Owner.create!(name: 'Rogério Sampaio', email: 'rsampaio123@gmail.com', password: '123456')
     lodge = Lodge.create!(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', neighborhood: 'Coqueiros', city: 'Marataízes',
                           state: 'ES', country: 'Brasil', zip_code: '12345-985', description: 'Pousada em frente à praia', bedrooms: 5, 
-                          max_guests: 12, pets: true, disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
-                          status: 'available', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
+                          max_guests: 12, pets: 'Sim', disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
+                          status: 'Ativa', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
                           corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
                           policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
     room = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', area: '15 m²', max_guests: 2,
-                        standard_overnight: '150,00 BRL', bathroom: true, balcony: true, ac: true, tv: true, 
-                        closet: true, disabled_facilities: true, safe: false, vacant: true, lodge: lodge)
+                        standard_overnight: '150,00 BRL', bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
+                        closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', vacant: 'Disponível', lodge: lodge)
     #Act 
     visit root_path
     login_as owner
@@ -58,13 +58,13 @@ describe 'Owner edits a room' do
     owner = Owner.create!(name: 'Rogério Sampaio', email: 'rsampaio123@gmail.com', password: '123456')
     lodge = Lodge.create!(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', neighborhood: 'Coqueiros', city: 'Marataízes',
                           state: 'ES', country: 'Brasil', zip_code: '12345-985', description: 'Pousada em frente à praia', bedrooms: 5, 
-                          max_guests: 12, pets: true, disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
-                          status: 'available', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
+                          max_guests: 12, pets: 'Sim', disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
+                          status: 'Ativa', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
                           corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
                           policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
     room = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', area: '15 m²', max_guests: 2,
-                        standard_overnight: '150,00 BRL', bathroom: true, balcony: true, ac: true, tv: true, 
-                        closet: true, disabled_facilities: true, safe: false, vacant: true, lodge: lodge)
+                        standard_overnight: '150,00 BRL', bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
+                        closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', vacant: 'Sim', lodge: lodge)
 
     #Act 
     visit root_path
@@ -85,19 +85,19 @@ describe 'Owner edits a room' do
     owner2 = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
     lodge1 = Lodge.create!(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', neighborhood: 'Coqueiros', city: 'Marataízes',
                           state: 'ES', country: 'Brasil', zip_code: '12345-985', description: 'Pousada em frente à praia', bedrooms: 5, 
-                          max_guests: 12, pets: true, disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
-                          status: 'available', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
+                          max_guests: 12, pets: 'Sim', disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
+                          status: 'Ativa', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
                           corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
                           policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner1)
     lodge2 = Lodge.create!(name: 'Recanto do Sol', address: 'Rua das Emas, 13', neighborhood: 'Serrinha', city: 'Belo Horizonte',
                            state: 'MG', country: 'Brasil', zip_code: '77345-000', description: 'Pousada com vista para a serra', bedrooms: 6,
-                           max_guests: 20, pets: false, disabled_facilities: 'Rampas de acesso', check_in: '17:00', check_out: '14:00', 
-                           status: 'unavailable', email: 'recantodosol@gmail.com', phone_number: '38985694512',
+                           max_guests: 20, pets: 'Não', disabled_facilities: 'Rampas de acesso', check_in: '17:00', check_out: '14:00', 
+                           status: 'Inativa', email: 'recantodosol@gmail.com', phone_number: '38985694512',
                            corporate_name: 'Fernandes e Oliveira LTDA', cnpj: '91241057000138', payment_method: "Cartão de débito, Dinheiro e Pix", 
                            policies: 'Silêncio a partir das 22h. Proibido visitas.', owner: owner2)
     room = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', area: '15 m²', max_guests: 2,
-                        standard_overnight: '150,00 BRL', bathroom: true, balcony: true, ac: true, tv: true, 
-                        closet: true, disabled_facilities: true, safe: false, vacant: true, lodge: lodge1)
+                        standard_overnight: '150,00 BRL', bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
+                        closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', vacant: 'Disponível', lodge: lodge1)
 
     #Act 
     visit root_path
@@ -114,13 +114,13 @@ describe 'Owner edits a room' do
     owner = Owner.create!(name: 'Rogério Sampaio', email: 'rsampaio123@gmail.com', password: '123456')
     lodge = Lodge.create!(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', neighborhood: 'Coqueiros', city: 'Marataízes',
                           state: 'ES', country: 'Brasil', zip_code: '12345-985', description: 'Pousada em frente à praia', bedrooms: 5, 
-                          max_guests: 12, pets: true, disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
-                          status: 'available', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
+                          max_guests: 12, pets: 'Sim', disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
+                          status: 'Ativa', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
                           corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
                           policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
     room = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', area: '15 m²', max_guests: 2,
-                        standard_overnight: '150,00 BRL', bathroom: true, balcony: true, ac: true, tv: true, 
-                        closet: true, disabled_facilities: true, safe: false, vacant: true, lodge: lodge)
+                        standard_overnight: '150,00 BRL', bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
+                        closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', vacant: 'Sim', lodge: lodge)
 
     #Act 
     visit root_path

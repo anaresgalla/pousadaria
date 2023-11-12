@@ -15,10 +15,10 @@
             <dd><%= @lodge.bedrooms %></dd>
             <dt><strong>Máximo de hóspedes:</strong></dt> 
             <dd><%= @lodge.max_guests %></dd> 
-            <dt><strong>Acessibilidade para PCD:</strong></dt> 
+            <dt><strong>Acessibilidade para PcD:</strong></dt> 
             <dd><%= @lodge.disabled_facilities %></dd>
-            <dt><strong>Animais de estimação:</strong></dt> 
-            <dd><%= @lodge.pets %></dd>
+            <dt><strong>Aceita Animais de Estimação:</strong></dt> 
+            <dd><%= boolean_to_human(@lodge.pets) %></dd>
             <dt><strong>Status:</strong></dt>
             <dd><%= @lodge.status %></dd>
             <dt><strong>E-mail:</strong></dt> 

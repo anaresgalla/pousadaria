@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      special_pricings:
+        one: 'Preço Especial'
+        other: 'Preços Especiais'
+    attributes:
+      special_princings:
+        start_date: 'Data Inicial'
+        end_date: 'Data Final'
+        price: 'Preço Especial'

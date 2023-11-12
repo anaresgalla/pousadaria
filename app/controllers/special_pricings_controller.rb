@@ -1,5 +1,6 @@
 class SpecialPricingsController < ApplicationController
   before_action :set_room, only: [:new, :create]
+  before_action :redirect_owner_to_lodge_registration
    
   def new
     @special_pricing = SpecialPricing.new

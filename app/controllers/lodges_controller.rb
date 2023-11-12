@@ -1,5 +1,6 @@
 class LodgesController < ApplicationController
   before_action :set_lodge, only: [:show, :edit, :update]
+  before_action :redirect_owner_to_lodge_registration, only: [:show, :edit, :update]
  
   def show
     @lodge = Lodge.find(params[:id])

@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_action :redirect_owner_to_lodge_registration
+  
   def index
     @recent_lodges = Lodge.all.where(status: 'available').order(created_at: :desc).limit(3)
     @other_lodges = Lodge.all.where(status: 'available').order(created_at: :desc).offset(3)

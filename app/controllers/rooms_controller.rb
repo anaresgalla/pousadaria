@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   before_action :set_room, only: [:show, :edit, :update]
   before_action :set_lodge, only: [:show, :new]
+  before_action :redirect_owner_to_lodge_registration
   
   def show
     @room = Room.all.where(lodge_id: @lodge.id).find(params[:id])

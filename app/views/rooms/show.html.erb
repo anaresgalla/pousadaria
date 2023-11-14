@@ -40,6 +40,9 @@
           </dl>
         </div>
         <div>
+          <strong><%= link_to('Reservar', new_lodge_room_booking_path(@room.id, @room))%></strong>
+        </div>                     
+        <div>
           <% if current_owner == @room.lodge.owner %>
             <strong><%= link_to('Editar', edit_lodge_room_path(@room.id))%></strong>
             <strong><%= link_to('Atualizar Preços', new_lodge_room_special_pricing_path(@room.lodge, @room))%></strong>

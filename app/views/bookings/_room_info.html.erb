@@ -1,0 +1,12 @@
+<h1>Informações do Quarto</h1>
+<p><strong>Nome do Quarto:</strong> <%= @room.name %></p>
+<p><strong>Descrição:</strong> <%= @room.description %></p>
+<p><strong>Área:</strong> <%= @room.area %></p>
+<p><strong>Máximo de Hóspedes:</strong> <%= @room.max_guests %></p>
+<p><strong>Banheiro:</strong> <%= boolean_to_human(@room.bathroom) %></p>
+<p><strong>Sacada:</strong> <%= boolean_to_human(@room.balcony) %></p>
+<p><strong>Ar Condicionado:</strong> <%= boolean_to_human(@room.ac) %></p>
+<p><strong>TV:</strong> <%= boolean_to_human(@room.tv) %></p>
+<p><strong>Acessibilidade para PCD:</strong> <%= boolean_to_human(@room.disabled_facilities) %></p>
+<p><strong>Guarda-roupas:</strong> <%= boolean_to_human(@room.closet) %></p>
+<p><strong>Cofre:</strong> <%= boolean_to_human(@room.safe) %></p>

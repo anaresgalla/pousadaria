@@ -1,0 +1,13 @@
+<h1>Reservas</h1>
+  
+  <% if @booking.errors.any? %>
+  <p>Verifique o(s) erro(s) abaixo:</p>
+    <ul> 
+      <% @booking.errors.full_messages.each do |msg| %>
+      <li><%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+<%= render 'room_info' %>
+<%= render 'form' %>

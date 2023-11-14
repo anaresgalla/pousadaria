@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :lodges, only: [:show, :new, :create, :edit, :update, :search] do
     resources :rooms, only: [:show, :new, :create, :edit, :update] do
       resources :special_pricings, only: [:new, :create]
+      resources :bookings, only: [:new, :create, :edit, :update]
     end
   end
 end

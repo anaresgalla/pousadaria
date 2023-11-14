@@ -7,8 +7,8 @@ class HomeController < ApplicationController
   end
 
   def search
-    @lodges = Lodge.where('name like ? OR neighborhood like ? OR city like ?',
-                        "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+    @lodges = Lodge.where('name like ? OR neighborhood like ? OR city like ? OR pets like ?', 
+                        "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%",  "%#{params[:q]}%")
                    .order :name
   end
 end

@@ -3,6 +3,7 @@ class Room < ApplicationRecord
   
   belongs_to :lodge
   has_many :special_pricings
+  has_many :bookings
 
   def updated_standard_overnight
     special_pricing = special_pricings.find { |sp| Date.today.between?(sp.start_date, sp.end_date) }

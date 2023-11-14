@@ -1,0 +1,21 @@
+<%= form_with model: [@room.lodge, @room, @booking] do |f| %>
+  <div>
+    <%= f.label :check_in, 'Data de Entrada' %>
+    <%= f.date_field :check_in %>
+  </div>
+  <div>
+    <%= f.label :check_out, 'Data de Saída' %>
+    <%= f.date_field :check_out %>
+  </div>
+  <div>
+    <%= f.label :guests, 'Número de Hóspedes' %>
+    <%= f.number_field :guests %>
+  </div>
+  <div>
+    <%= f.label :total_price, 'Valor Total' %>
+    <%= f.number_field :total_price, step: :any %>
+  </div>
+  <div>
+    <%= f.submit 'Consultar Disponibilidade' %>
+  </div>
+<% end %>

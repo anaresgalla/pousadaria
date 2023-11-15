@@ -1,0 +1,7 @@
+<%= render 'room_info' %>
+
+<h2>Dados para Reserva:</h2>
+<p><strong>Data de Entrada:</strong> <%= @booking.check_in %></p>
+<p><strong>Data de Saída:</strong> <%= @booking.check_out %></p>
+<p><strong>Número de Hóspedes:</strong> <%= @booking.guests %></p>
+<p><strong>Valor Total:</strong> R$ <%= @total_price %></p>

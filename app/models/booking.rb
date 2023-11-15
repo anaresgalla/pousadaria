@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  validates :check_in, :check_out, :guests, :total_price, presence: true
+  validates :check_in, :check_out, :guests, presence: true
   validate :verify_number_of_guests
   validate :overlapping
   belongs_to :room

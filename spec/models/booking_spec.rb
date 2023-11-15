@@ -15,7 +15,7 @@ RSpec.describe Booking, type: :model do
         room = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', area: '15 m²', max_guests: 2,
                             standard_overnight: '150,00 BRL', bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
                             closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', vacant: 'Sim', lodge: lodge)
-        booking = Booking.new(check_in: nil, check_out: nil, guests: nil, total_price: nil, room: room)
+        booking = Booking.new(check_in: nil, check_out: nil, guests: nil, room: room)
 
         #Act
         result = booking.valid?

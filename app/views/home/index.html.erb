@@ -1,8 +1,10 @@
 <section id="lodges">
   <h2> Pousadas Disponíveis</h2> 
-  <div> 
-    <%= link_to('Cadastrar Pousada', new_lodge_path) %>
-  </div>
+    <% if owner_signed_in? %>
+      <div> 
+        <%= link_to('Cadastrar Pousada', new_lodge_path) %>
+      </div>
+    <% end %>
 
   <div id="city-menu">
       <h3>Cidades:</h3>

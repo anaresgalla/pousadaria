@@ -6,10 +6,9 @@ describe 'Owner registers a new lodge' do
     owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
     
     #Act
-    visit root_path
-    click_on 'Cadastrar Pousada'
-    login_as(owner)
-
+    login_as owner, scope: :owner
+    visit new_lodge_path
+       
     #Assert
     expect(page).to have_field 'Nome'
     expect(page).to have_field 'Descrição'
@@ -24,8 +23,8 @@ describe 'Owner registers a new lodge' do
     owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
         
     #Act
-    visit root_path
-    login_as(owner)
+    login_as owner, scope: :owner
+    visit new_lodge_path
     fill_in 'Nome', with: 'Pousada do Mar'
     fill_in 'Descrição', with: 'Pousada em frente à praia'
     fill_in 'Endereço', with: 'Avenida Beira Mar, 1500' 
@@ -58,10 +57,10 @@ describe 'Owner registers a new lodge' do
   it 'and with incomplete information' do 
     #Arrange 
     owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
+    
     #Act
-    visit root_path
-    click_on 'Cadastrar Pousada'
-    login_as(owner)
+    login_as owner, scope: :owner
+    visit new_lodge_path
     fill_in 'Nome', with: ''
     fill_in 'Descrição', with: ''
     fill_in 'CNPJ', with: ''

@@ -3,7 +3,8 @@ require 'rails_helper'
 describe 'Owner registers a new lodge' do 
   it 'from the homepage' do
     #Arrange
-    owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
+    owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', 
+                          password: '123456')
     
     #Act
     login_as owner, scope: :owner
@@ -20,7 +21,8 @@ describe 'Owner registers a new lodge' do
 
   it 'successfully' do
     #Arrange
-    owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
+    owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', 
+                          password: '123456')
         
     #Act
     login_as owner, scope: :owner
@@ -81,13 +83,18 @@ describe 'Owner registers a new lodge' do
 
   it 'and tries to register more than one lodge' do 
     #Arrange 
-    owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', password: '123456')
+    owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', 
+                          password: '123456')
     login_as(owner)
-    l = Lodge.create(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', neighborhood: 'Coqueiros', city: 'Marataízes',
-                     state: 'ES', country: 'Brasil', zip_code: '12345-985', description: 'Pousada em frente à praia', bedrooms: 5, 
-                     max_guests: 12, pets: 'Sim', disabled_facilities: 'Menu em Braile', check_in: '15:00', check_out: '12:00', 
-                     status: 'Ativa', email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
-                     corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', payment_method: "Cartão de crédito, Pix", 
+    l = Lodge.create(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', 
+                     neighborhood: 'Coqueiros', city: 'Marataízes', state: 'ES', 
+                     country: 'Brasil', zip_code: '12345-985', 
+                     description: 'Pousada em frente à praia', bedrooms: 5, 
+                     max_guests: 12, pets: 'Sim', disabled_facilities: 'Menu em Braile', 
+                     check_in: '15:00', check_out: '12:00', status: 'Ativa', 
+                     email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
+                     corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', 
+                     payment_method: "Cartão de crédito, Pix", 
                      policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
 
     #Act

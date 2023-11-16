@@ -1,7 +1,8 @@
 class Lodge < ApplicationRecord
-  validates :name, :description, :status, :disabled_facilities, :address, :city, :state, 
-            :country, :zip_code, :phone_number, :email, :bedrooms, :max_guests, :check_in, 
-            :check_out, :corporate_name, :cnpj, :payment_method, :policies, presence: true
+  validates :name, :description, :status, :disabled_facilities, :address, :city, 
+            :state, :country, :zip_code, :phone_number, :email, :bedrooms, 
+            :max_guests, :check_in, :check_out, :corporate_name, :cnpj, 
+            :payment_method, :policies, presence: true
 
   enum status: { Ativa: 0, Inativa: 5 }
   

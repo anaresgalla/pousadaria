@@ -39,8 +39,10 @@ class RoomsController < ApplicationController
   private 
 
   def room_params
-    params.require(:room).permit(:name, :description, :area, :max_guests, :standard_overnight,
-                                 :bathroom, :balcony, :ac, :tv, :closet, :disabled_facilities, :safe, :vacant)
+    params.require(:room).permit(:name, :description, :area, :max_guests, 
+                                 :standard_overnight, :bathroom, :balcony, 
+                                 :ac, :tv, :closet, :disabled_facilities, 
+                                 :safe, :vacant)
   end
 
   def set_room

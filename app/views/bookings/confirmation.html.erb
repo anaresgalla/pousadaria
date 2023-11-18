@@ -2,6 +2,12 @@
 
 <h2>Dados para Reserva:</h2>
 <p><strong>Data de Entrada:</strong> <%= @booking.check_in %></p>
+<p><strong>Horário de Entrada:</strong> <%= @lodge.check_in.strftime("%H:%M") %></p>
 <p><strong>Data de Saída:</strong> <%= @booking.check_out %></p>
+<p><strong>Horário de Saída:</strong> <%= @lodge.check_out.strftime("%H:%M") %></p>
 <p><strong>Número de Hóspedes:</strong> <%= @booking.guests %></p>
 <p><strong>Valor Total:</strong> R$ <%= @total_price %></p>
+<p><strong>Modos de Pagamento:</strong> <%= @lodge.payment_method %></p>
+<div>   
+  <%= button_to 'Confirmar Reserva', save_booking_lodge_room_path(@lodge, @room, @booking), method: :post %>
+</div>

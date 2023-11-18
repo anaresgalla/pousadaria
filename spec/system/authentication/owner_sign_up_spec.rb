@@ -27,7 +27,7 @@ describe 'Owner authentication' do
     fill_in 'Name', with: 'Elisa'
     fill_in 'Email', with: 'elisa@email.com'
     fill_in 'Password', with: '123456'
-    fill_in 'Password confirmation', with: '123456'
+    fill_in 'Password ', with: '123456'
     click_on 'Sign up'
 
     #Assert

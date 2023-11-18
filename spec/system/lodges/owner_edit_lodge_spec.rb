@@ -18,7 +18,7 @@ describe 'Owner edits a lodge' do
     
     #Act 
     visit root_path
-    login_as(owner)
+    login_as owner
     click_on 'Pousada do Mar'
     click_on 'Editar'
 
@@ -46,7 +46,7 @@ describe 'Owner edits a lodge' do
     
     #Act 
     visit root_path
-    login_as(owner)
+    login_as owner
     click_on 'Pousada do Mar'
     click_on 'Editar'
     fill_in 'Nome', with: 'Pousada das Sereias'
@@ -74,7 +74,7 @@ describe 'Owner edits a lodge' do
 
     #Act 
     visit root_path
-    login_as(owner)
+    login_as owner
     click_on 'Pousada do Mar'
     click_on 'Editar'
     fill_in 'Nome', with: ''
@@ -103,7 +103,7 @@ describe 'Owner edits a lodge' do
 
     #Act 
     visit root_path
-    login_as(owner2)
+    login_as owner2
     click_on 'Pousada do Mar'
     
     #Assert 

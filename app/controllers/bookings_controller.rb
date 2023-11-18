@@ -11,20 +11,39 @@ class BookingsController < ApplicationController
   
     if @booking.valid?
       session[:booking_attributes] = @booking.attributes
-      redirect_to confirmation_lodge_room_path(@booking.room.lodge, @booking.room, @booking)
+      redirect_to availability_lodge_room_path(@booking.room.lodge, @booking.room, @booking)
     else
       render 'new'
     end
   end
   
-  def confirmation
+  def availability
     booking_attributes = session[:booking_attributes]
     @booking = Booking.new(booking_attributes)
     @room = @booking.room
     @lodge = @booking.room.lodge   
     @total_price = calculate_total_price(@room, @booking.check_in, @booking.check_out).to_f
     flash.now[:notice] = 'O quarto está disponível.'
+    session[:redirect_after_sign_in] = availability_lodge_room_path(@booking.room.lodge, @booking.room, @booking)
   end  
+
+  def confirmation
+    booking_attributes = session[:booking_attributes]
+    @booking = Booking.new(booking_attributes)
+    @room = @booking.room
+    session[:room] = @room.id
+    @lodge = @booking.room.lodge   
+    @total_price = calculate_total_price(@room, @booking.check_in, @booking.check_out).to_f
+  end
+
+  def save_booking
+    booking_attributes = session[:booking_attributes]
+    @booking = Booking.new(booking_attributes)
+    @booking.user = current_user
+    if @booking.save     
+      redirect_to root_path, notice: 'Reserva feita com sucesso!'
+    end
+  end 
 
   private
 

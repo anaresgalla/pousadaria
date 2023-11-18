@@ -12,14 +12,14 @@ class LodgesController < ApplicationController
   end
 
   def create     
-     @lodge = Lodge.new(lodge_params)
-     @lodge.owner = current_owner
-     if @lodge.save     
-       redirect_to root_path, notice: 'Pousada cadastrada com sucesso!'
-     else 
-       flash.now[:notice] = 'Pousada não cadastrada.'
-       render 'new'
-     end
+    @lodge = Lodge.new(lodge_params)
+    @lodge.owner = current_owner
+    if @lodge.save     
+      redirect_to root_path, notice: 'Pousada cadastrada com sucesso!'
+    else 
+      flash.now[:notice] = 'Pousada não cadastrada.'
+      render 'new'
+    end
   end
 
   def edit 

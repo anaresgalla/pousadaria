@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resources :rooms, only: [:show, :new, :create, :edit, :update] do
       resources :special_pricings, only: [:new, :create]
       resources :bookings, only: [:new, :create, :edit, :update]
-        get 'confirmation', to:'bookings#confirmation', on: :member
+        get 'availability', to:'bookings#availability', on: :member
+        get 'confirmation', to:'bookings#confirmation', on: :member 
+        post 'save_booking', to:'bookings#save_booking', on: :member 
     end
   end
 end

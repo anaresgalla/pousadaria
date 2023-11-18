@@ -114,7 +114,7 @@ describe 'User is booking a room' do
     click_on 'Confirmar Reserva'
 
     #Assert
-    expect(current_path).to eq root_path
+    expect(current_path).to eq my_bookings_path
   end
   
   it 'and is successful and sees his bookings on my bookings page' do
@@ -153,7 +153,6 @@ describe 'User is booking a room' do
     click_on 'Consultar Disponibilidade'
     click_on 'Reservar o Quarto'
     click_on 'Confirmar Reserva'
-    click_on 'Minhas Reservas'
     click_on '12345678'
 
     #Assert

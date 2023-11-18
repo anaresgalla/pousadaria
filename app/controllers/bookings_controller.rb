@@ -48,13 +48,28 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_attributes)
     @booking.user = current_user
     if @booking.save     
-      redirect_to root_path, notice: 'Reserva feita com sucesso!'
+      redirect_to my_bookings_path, notice: 'Reserva feita com sucesso!'
     end
   end 
 
   def my_bookings
     @my_bookings = current_user.bookings
   end 
+
+  def cancel_booking
+    @booking = Booking.find(params[:id])
+    @room = @booking.room
+    if current_user == @booking.user
+      @booking.canceled! if @booking.can_be_cancelled?
+      redirect_to my_bookings_path(@booking), notice: "Reserva cancelada"
+    elsif current_owner == @booking.room.lodge.owner
+      @booking.canceled! if @booking.confirmed? && Date.today >= @booking.start_date + 2.days
+      return redirect_to my_bookings_path(@booking), alert: "Não foi possível cancelar a reserva" unless @booking.canceled?
+      redirect_to my_bookings_path(@booking), notice: "Reserva cancelada"
+    else
+      redirect_to my_bookings_path(@booking), alert: "Não foi possível cancelar a reserva"
+    end
+  end
 
   private
 

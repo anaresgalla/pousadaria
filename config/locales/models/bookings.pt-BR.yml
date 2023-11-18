@@ -1,4 +1,8 @@
 pt-BR:
+  confirmed: 'Confirmada'
+  active: 'Ativa'
+  completed: 'Finalizada'
+  canceled: 'Cancelada'
   activerecord:
     models:
       booking:
@@ -10,3 +14,4 @@ pt-BR:
         check_out: 'Data de Saída'
         guests: 'Número de Hóspedes'
         total_price: 'Valor Total'
+        

@@ -10,7 +10,16 @@
   <% @my_bookings.each do |mb| %>
     <div>
       <%= link_to mb.code, mb %> <%= mb.room.lodge.city %>, data inicial: <%= mb.check_in.strftime("%d/%m/%Y") %>,
-          data final: <%= mb.check_out.strftime("%d/%m/%Y") %>
+          data final: <%= mb.check_out.strftime("%d/%m/%Y") %> 
+          <p><%= Booking.human_attribute_name(:status) %>:
+             <%= I18n.t(mb.status) %></p>
+          <% if mb.can_be_cancelled? && mb.active? || mb.can_be_cancelled? && mb.confirmed? %>
+            <%= button_to 'Cancelar Reserva', cancel_booking_path(mb.id), method: :post %>
+          <% else %>
+            <% if mb.status != 'canceled' %>
+              <p>A reserva não pode ser cancelada.</p>
+            <% end %>
+          <% end %>
     </div>
   <% end %>
 </ul>

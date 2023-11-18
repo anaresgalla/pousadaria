@@ -1,0 +1,11 @@
+<h1>Minhas Reservas</h1>
+
+<h2>Reservas Ativas:</h2>
+<ul>
+  <% @my_bookings.each do |mb| %>
+    <div>
+      <%= mb.room.lodge.city %>, data inicial: <%= mb.check_in.strftime("%d/%m/%Y") %>,
+          data final: <%= mb.check_out.strftime("%d/%m/%Y") %>
+    </div>
+  <% end %>
+</ul>

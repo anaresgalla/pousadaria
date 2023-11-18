@@ -45,6 +45,10 @@ class BookingsController < ApplicationController
     end
   end 
 
+  def my_bookings
+    @my_bookings = current_user.bookings
+  end 
+
   private
 
   def calculate_total_price(room, start_date, end_date)

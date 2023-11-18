@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
- # before_validation :generate_code, on: :create
+  before_validation :generate_code, on: :create
   validates :check_in, :check_out, :guests, presence: true #:code,
   validate :verify_number_of_guests
   validate :overlapping
@@ -36,7 +36,7 @@ class Booking < ApplicationRecord
     result
   end
 
-  # def generate_code
-  #   self.code = SecureRandom.alphanumeric(8).upcase
-  # end
+  def generate_code
+    self.code = SecureRandom.alphanumeric(8).upcase
+  end
 end

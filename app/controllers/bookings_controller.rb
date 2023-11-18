@@ -1,6 +1,13 @@
 class BookingsController < ApplicationController
   before_action :set_room, only: [:new, :create]
-  
+    
+  def show
+    @booking = Booking.find(params[:id])
+    @room = @booking.room
+    @lodge = @room.lodge
+    @total_price = calculate_total_price(@room, @booking.check_in, @booking.check_out).to_f
+  end 
+
   def new
     @booking = Booking.new
   end  

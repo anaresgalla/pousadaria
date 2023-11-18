@@ -12,10 +12,15 @@ Rails.application.routes.draw do
   resources :lodges, only: [:show, :new, :create, :edit, :update, :search] do
     resources :rooms, only: [:show, :new, :create, :edit, :update] do
       resources :special_pricings, only: [:new, :create]
-      resources :bookings, only: [:show, :new, :create, :edit, :update]
+      resources :bookings, only: [:new, :create, :edit, :update]
         get 'availability', to:'bookings#availability', on: :member
         get 'confirmation', to:'bookings#confirmation', on: :member 
         post 'save_booking', to:'bookings#save_booking', on: :member 
     end
   end
+
+  resources :bookings, only: [:index, :show] do
+    get 'active', on: :collection
+  end
+
 end

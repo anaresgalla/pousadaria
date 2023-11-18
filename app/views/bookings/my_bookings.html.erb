@@ -1,10 +1,15 @@
 <h1>Minhas Reservas</h1>
 
 <h2>Reservas Ativas:</h2>
+
+<% if @my_bookings.empty? %>
+  <p>Não há reservas ativas.</p>
+<% end %>
+
 <ul>
   <% @my_bookings.each do |mb| %>
     <div>
-      <%= mb.room.lodge.city %>, data inicial: <%= mb.check_in.strftime("%d/%m/%Y") %>,
+      <%= link_to mb.code, mb %> <%= mb.room.lodge.city %>, data inicial: <%= mb.check_in.strftime("%d/%m/%Y") %>,
           data final: <%= mb.check_out.strftime("%d/%m/%Y") %>
     </div>
   <% end %>

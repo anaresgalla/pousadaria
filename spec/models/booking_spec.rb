@@ -28,6 +28,17 @@ RSpec.describe Booking, type: :model do
         #Assert
         expect(result).to eq false 
       end
-    end
+
+      it 'every booking has an unique 8-digit code' do
+        #Arrange
+        booking1 = Booking.create
+        booking2 = Booking.create
+
+        #Assert
+        expect(booking1.code.length).to eq 8
+        expect(booking2.code.length).to eq 8
+        expect(booking1.code).not_to eq booking2.code
+      end
+    end 
   end
 end

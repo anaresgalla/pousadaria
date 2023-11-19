@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
   get 'my_bookings', to: 'bookings#my_bookings', as: :my_bookings
   post 'bookings/:id/cancel', to: 'bookings#cancel_booking', as: :cancel_booking
+
+  get 'lodge_bookings', to: 'bookings#lodge_bookings', as: :lodge_bookings
+  #post 'bookings/:id/cancel', to: 'bookings#cancel_booking', as: :cancel_booking
   
   resources :lodges, only: [:show, :new, :create, :edit, :update, :search] do
     resources :rooms, only: [:show, :new, :create, :edit, :update] do

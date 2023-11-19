@@ -4,6 +4,9 @@
       <div> 
         <%= link_to('Cadastrar Pousada', new_lodge_path) %>
       </div>
+      <div> 
+        <%= link_to('Reservas',lodge_bookings_path) %>
+      </div>
     <% end %>
 
     <% if user_signed_in? %>

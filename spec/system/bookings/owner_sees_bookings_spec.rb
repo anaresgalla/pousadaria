@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User sees their bookings' do
+describe 'Owner sees bookings of their lodge' do
   it 'and they are listed' do
     #Arrange
     owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', 
@@ -28,12 +28,13 @@ describe 'User sees their bookings' do
                                guests: 2, room: room, user: user)
 
     #Act
-    login_as user, scope: :user 
+    login_as owner 
     visit root_path 
-    click_on 'Minhas Reservas'
+    click_on 'Reservas'
     
     #Assert
-    expect(page).to have_content 'Reservas Ativas'
+    expect(page).to have_content 'Pérola Negra'
+    expect(page).to have_content 'Confirmada'
   end
 
   it 'and there are no bookings' do
@@ -55,15 +56,13 @@ describe 'User sees their bookings' do
                         bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
                         closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', 
                         vacant: 'Disponível', lodge: lodge)
-    user = User.create!(name: 'Ana', email: 'ana@email.com', 
-                        password: '123456', cpf: '27111653025')
 
     #Act
-    login_as user, scope: :user 
+    login_as owner 
     visit root_path 
-    click_on 'Minhas Reservas'
+    click_on 'Reservas'
     
     #Assert
     expect(page).to have_content 'Não há reservas ativas.'
   end
-end 
+end

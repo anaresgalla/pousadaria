@@ -9,6 +9,7 @@ class Lodge < ApplicationRecord
   belongs_to :owner
   has_many :rooms
   validates_uniqueness_of :owner_id
+  has_many :bookings, through: :rooms
 
 
   def status_translation

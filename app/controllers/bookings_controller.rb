@@ -56,6 +56,10 @@ class BookingsController < ApplicationController
     @my_bookings = current_user.bookings
   end 
 
+  def lodge_bookings
+    @lodge_bookings = current_owner.lodge.bookings
+  end 
+
   def cancel_booking
     @booking = Booking.find(params[:id])
     @room = @booking.room

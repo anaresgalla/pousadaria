@@ -2,9 +2,12 @@
 <p><strong>Código da Reserva:</strong><%= @booking.code %></p>
 <%= render 'room_info' %>
 <p><strong>Data de Entrada:</strong> <%= @booking.check_in.strftime("%d/%m/%Y") %></p>
-<p><strong>Horário de Entrada:</strong> <%= @lodge.check_in.strftime("%H:%M") %></p>
+<% if @booking.actual_check_in_time != nil %>
+  <p><strong>Check in efetuado às:</strong> <%= @booking.actual_check_in_time.strftime("%H:%M") %></p>
+<% end %>
+<p><strong>Entrada a partir de:</strong> <%= @lodge.check_in.in_time_zone("Brasilia").strftime("%H:%M") %></p>
 <p><strong>Data de Saída:</strong> <%= @booking.check_out.strftime("%d/%m/%Y") %></p>
-<p><strong>Horário de Saída:</strong> <%= @lodge.check_out.strftime("%H:%M") %></p>
+<p><strong>Saída até:</strong> <%= @lodge.check_out.strftime("%H:%M") %></p>
 <p><strong>Número de Hóspedes:</strong> <%= @booking.guests %></p>
 <p><strong>Valor Total:</strong> R$ <%= @total_price %></p>
 <p><strong>Modos de Pagamento:</strong> <%= @lodge.payment_method %></p>

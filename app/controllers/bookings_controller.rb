@@ -62,9 +62,8 @@ class BookingsController < ApplicationController
 
   def check_in_booking
     @booking = Booking.find(params[:id])
-    #@room = @booking.room
     if @booking.check_in <= Date.current
-      @booking.update!(check_in: DateTime.current, status: :active)
+      @booking.update!(check_in: Time.zone.now, status: :active, actual_check_in_time: Time.now.strftime('%H:%M'))
       redirect_to lodge_bookings_path, notice: 'Check-in realizado.'
     else
       redirect_to lodge_bookings_path, notice: 'Não é possível fazer check-in'

@@ -9,8 +9,8 @@ class SpecialPricing < ApplicationRecord
   def dates_overlapping    
     if room && start_date && end_date
       overlapping_special_pricings = room.special_pricings
-                            .where.not(id: id)
-                            .where('start_date <= ? AND end_date >= ?', end_date, start_date)
+                                    .where.not(id: id)
+                                    .where('start_date <= ? AND end_date >= ?', end_date, start_date)
       
       if overlapping_special_pricings.any?
         errors.add(:base, 'O quarto já possui um preço especial nessa data.')

@@ -34,13 +34,20 @@ class Booking < ApplicationRecord
   def overlapping
     result = true
     booked = {}
+    bookings = Booking.where(status: [0, 5]).pluck(:check_in, :check_out)
 
-    Booking.pluck(:check_in, :check_out).each do |date_range|
-        (date_range.first..date_range.second).each do |date| 
-            booked[date] = true
-        end
+    # Booking.pluck(:check_in, :check_out).each do |date_range|
+    #     (date_range.first..date_range.second).each do |date| 
+    #         booked[date] = true
+    #     end
+    #end
+    
+    bookings.each do |date_range|
+      (date_range.first..date_range.second).each do |date|
+        booked[date] = true
+      end
     end
-
+    
     if booked.has_key? self.check_in
         errors.add(:base, 'O quarto não está disponível na data de entrada.')
         result = false

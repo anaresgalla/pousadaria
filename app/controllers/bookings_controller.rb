@@ -60,6 +60,17 @@ class BookingsController < ApplicationController
     @lodge_bookings = current_owner.lodge.bookings
   end 
 
+  def check_in_booking
+    @booking = Booking.find(params[:id])
+    #@room = @booking.room
+    if @booking.check_in <= Date.current
+      @booking.update!(check_in: DateTime.current, status: :active)
+      redirect_to lodge_bookings_path, notice: 'Check-in realizado.'
+    else
+      redirect_to lodge_bookings_path, notice: 'Não é possível fazer check-in'
+    end
+  end 
+
   def cancel_booking
     @booking = Booking.find(params[:id])
     @room = @booking.room
@@ -75,6 +86,10 @@ class BookingsController < ApplicationController
     end
   end
 
+  def active_stays
+    @active_stays = current_owner.lodge.bookings.where(status: Booking.statuses[:active]).order(created_at: :desc)
+  end
+  
   private
 
   def calculate_total_price(room, start_date, end_date)

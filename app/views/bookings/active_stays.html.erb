@@ -1,0 +1,16 @@
+<h1>Estadias Ativas</h1>
+
+<% if @active_stays.empty? %>
+  <p>Não há estadias ativas.</p>
+<% end %>
+
+<ul>
+  <% @active_stays.each do |as| %>  
+    <div class="booking" >
+      Código: <%= link_to as.code, as %> Nome do quarto: <%= as.room.name %>, data inicial: <%= as.check_in.strftime("%d/%m/%Y") %>,
+          data final: <%= as.check_out.strftime("%d/%m/%Y") %>, número de hóspedes: <%= as.guests %>
+          <p><%= Booking.human_attribute_name(:status) %>:
+             <%= I18n.t(as.status) %></p>
+    </div>
+  <% end %>
+</ul>

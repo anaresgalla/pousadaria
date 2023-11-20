@@ -9,5 +9,13 @@
 <p><strong>Valor Total:</strong> R$ <%= @total_price %></p>
 <p><strong>Modos de Pagamento:</strong> <%= @lodge.payment_method %></p>
 <div>
-  <strong><%= link_to('Voltar', my_bookings_path)%></strong>
+  <% if user_signed_in? %>
+    <strong><%= link_to 'Voltar', my_bookings_path %></strong>
+  <% end %>
+  <% if owner_signed_in? && !@booking.active? %>
+    <strong><%= button_to 'Confirmar check in', check_in_booking_path(@booking.id), method: :post%></strong>
+    <strong><%= link_to 'Voltar', lodge_bookings_path %></strong>
+  <% else %>
+    <strong><%= link_to 'Voltar', lodge_bookings_path %></strong>
+  <% end %>
 </div>

@@ -19,10 +19,9 @@ class Booking < ApplicationRecord
   private
 
   def check_in_date_within_limit
-    return unless check_in_changed? && check_in.present?
-    cancellation_limit = 7.days
+    return unless check_in_changed? && check_in.present? && status == :canceled
     if check_in - Time.zone.now < cancellation_limit
-      errors.add(:base, "Reservations can only be canceled up to 7 days before check-in.")
+      errors.add(:base, 'Reservas só podem ser canceladas até 7 dias antes do check in.')
     end
   end
 

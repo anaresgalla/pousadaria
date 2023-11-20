@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User cancels a booking' do
+describe 'Owner cancels a booking' do
   it 'and successfully' do
     #Arrange
     owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', 
@@ -21,19 +21,20 @@ describe 'User cancels a booking' do
                         closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', 
                         vacant: 'Disponível', lodge: lodge)
     user = User.create!(name: 'Ana', email: 'ana@email.com', password: '123456', cpf: '27111653025')
-    booking = Booking.create!(check_in: 8.day.from_now, check_out: 15.days.from_now, 
+    booking = Booking.create!(check_in: 2.days.ago, check_out: 15.days.from_now, 
                                guests: 2, room: room, user: user)
     allow(SecureRandom).to receive(:alphanumeric).and_return('12345678')
 
     #Act
-    login_as user, scope: :user
+    login_as owner
     visit root_path
-    click_on 'Minhas Reservas'
+    click_on 'Reservas'
+    click_on booking.code
     click_on 'Cancelar Reserva'
 
     #Assert
     expect(page).to have_content 'Reserva cancelada'
-    expect(current_path).to eq my_bookings_path(booking.id)
+    expect(current_path).to eq lodge_bookings_path(booking.id)
   end
 
   it 'and booking cannot be canceled' do
@@ -56,17 +57,19 @@ describe 'User cancels a booking' do
                         closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', 
                         vacant: 'Disponível', lodge: lodge)
     user = User.create!(name: 'Ana', email: 'ana@email.com', password: '123456', cpf: '27111653025')
-    booking = Booking.create!(check_in: 6.day.from_now, check_out: 10.days.from_now, 
+    booking = Booking.create!(check_in: 1.day.ago, check_out: 10.days.from_now, 
                                guests: 2, room: room, user: user)
     allow(SecureRandom).to receive(:alphanumeric).and_return('12345678')
 
     #Act
-    login_as user, scope: :user
+    login_as owner
     visit root_path
-    click_on 'Minhas Reservas'
+    click_on 'Reservas'
+    click_on booking.code
+    click_on 'Cancelar Reserva'
 
     #Assert
-    expect(page).to have_content 'A reserva não pode ser cancelada.'
-    expect(current_path).to eq my_bookings_path
+    expect(page).to have_content 'A reserva não foi cancelada.'
+    expect(current_path).to eq lodge_bookings_path(booking.id)
   end
 end 

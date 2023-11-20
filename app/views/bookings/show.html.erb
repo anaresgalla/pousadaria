@@ -12,8 +12,9 @@
   <% if user_signed_in? %>
     <strong><%= link_to 'Voltar', my_bookings_path %></strong>
   <% end %>
-  <% if owner_signed_in? && !@booking.active? %>
+  <% if owner_signed_in? && @booking.confirmed? %>
     <strong><%= button_to 'Confirmar check in', check_in_booking_path(@booking.id), method: :post%></strong>
+    <strong><%= button_to 'Cancelar Reserva', cancel_booking_path(@booking.id), method: :post%></strong>
     <strong><%= link_to 'Voltar', lodge_bookings_path %></strong>
   <% else %>
     <strong><%= link_to 'Voltar', lodge_bookings_path %></strong>

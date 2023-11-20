@@ -1,7 +1,5 @@
 <h1>Reservas</h1>
 
-<h2><%= link_to 'Estadias Ativas', active_stays_path %></h2>  
-
 <% if @lodge_bookings.empty? %>
   <p>Não há reservas ativas.</p>
 <% end %>
@@ -12,14 +10,7 @@
       <%= link_to lb.code, lb %> Nome do quarto: <%= lb.room.name %>, data inicial: <%= lb.check_in.strftime("%d/%m/%Y") %>,
           data final: <%= lb.check_out.strftime("%d/%m/%Y") %>, número de hóspedes: <%= lb.guests %>
           <p><%= Booking.human_attribute_name(:status) %>:
-             <%= I18n.t(lb.status) %></p>
-          <% if lb.can_be_cancelled? && lb.active? || lb.can_be_cancelled? && lb.confirmed? %>
-            <%= button_to 'Cancelar Reserva', cancel_booking_path(lb.id), method: :post %>
-          <% else %>
-            <% if lb.status != 'canceled' %>
-              <p>A reserva não pode ser cancelada.</p>
-            <% end %>
-          <% end %>
+             <%= I18n.t(lb.status) %></p>   
     </div>
   <% end %>
 </ul>

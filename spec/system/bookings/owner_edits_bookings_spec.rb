@@ -67,7 +67,6 @@ describe 'Owner sees bookings of their lodge' do
     #Act
     login_as owner 
     visit root_path 
-    click_on 'Reservas'
     click_on 'Estadias Ativas'
     
     #Assert
@@ -123,7 +122,6 @@ describe 'Owner sees bookings of their lodge' do
     #Act
     login_as owner1 
     visit root_path 
-    click_on 'Reservas'
     click_on 'Estadias Ativas'
     
     #Assert

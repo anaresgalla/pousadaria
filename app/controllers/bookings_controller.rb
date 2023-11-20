@@ -76,13 +76,13 @@ class BookingsController < ApplicationController
     @room = @booking.room
     if current_user == @booking.user
       @booking.canceled! if @booking.can_be_cancelled?
-      redirect_to my_bookings_path(@booking), notice: "Reserva cancelada"
+      redirect_to my_bookings_path(@booking), notice: 'Reserva cancelada.'
     elsif current_owner == @booking.room.lodge.owner
-      @booking.canceled! if @booking.confirmed? && Date.today >= @booking.start_date + 2.days
-      return redirect_to my_bookings_path(@booking), alert: "Não foi possível cancelar a reserva" unless @booking.canceled?
-      redirect_to my_bookings_path(@booking), notice: "Reserva cancelada"
+      @booking.canceled! if @booking.confirmed? && Date.today >= @booking.check_in + 2.days
+      return redirect_to lodge_bookings_path(@booking), notice: 'A reserva não foi cancelada.' unless @booking.canceled?
+      redirect_to lodge_bookings_path(@booking), notice: 'Reserva cancelada.'
     else
-      redirect_to my_bookings_path(@booking), alert: "Não foi possível cancelar a reserva"
+      redirect_to lodge_bookings_path(@booking), notice: 'A reserva não pode ser cancelada.'
     end
   end
 

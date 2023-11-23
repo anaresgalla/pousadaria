@@ -7,7 +7,8 @@ class Booking < ApplicationRecord
   belongs_to :user, optional: true 
   validate :check_in_date_within_limit, on: :update
   enum status: { confirmed: 0, active: 5, completed: 10, canceled: 15 }
-
+  has_one :review
+  
   def can_be_cancelled?
     return false unless check_in.is_a?(Date)
 

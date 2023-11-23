@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
     @room = @booking.room
     @lodge = @room.lodge
     @total_price = calculate_special_price(@room, @booking.check_in, @booking.check_out).to_f
+    @review = @booking.review
   end 
 
   def new

@@ -27,5 +27,6 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index, :show] do
     get 'active', on: :collection
+    resources :reviews, only: [:new, :create]
   end
 end

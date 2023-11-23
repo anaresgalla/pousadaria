@@ -1,0 +1,20 @@
+<h2><%= @lodge.name %></h2>
+  <strong>Código:<%= @booking.code %></strong>
+
+<%= form_with(model: [@booking, @review]) do |f| %>
+  <div>
+    <p>Nota: </p>
+    <%= f.radio_button :rating, -1, hidden: true, checked: true %>
+    <% (0..5).each do |rating| %> 
+      <%= f.radio_button :rating, rating %>
+      <%= f.label :rating, rating, class: 'radio_label' %>
+    <% end %>
+  </div>
+  <div>
+    <%= f.label :comment, 'Deixe seu comentário:' %>
+    <%= f.text_area :comment %>
+  </div>
+  <div>
+    <%= f.submit 'Enviar' %>
+  </div>
+<% end %>

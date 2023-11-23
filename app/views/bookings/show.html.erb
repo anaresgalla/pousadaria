@@ -15,6 +15,20 @@
   <p><strong>Pagamento efetuado com:</strong> <%= @booking.payment_method %></p>
   <p><strong>Check out efetuado às:</strong> <%= @booking.actual_check_out_time.strftime("%H:%M") %></p>
 <% end %>
+
+<div>
+  <% if user_signed_in? && @booking.completed? && @booking.review == nil %>
+    <strong><%= link_to 'Avaliar Estadia', new_booking_review_path(@booking) %></strong>
+  <% end %>
+</div>
+
+<div>
+  <% if @review.present? %>
+    <strong>Nota:</strong> <%= @review.rating %>
+    <strong>Comentário:</strong> <%= @review.comment %>
+  <% end %>
+</div>
+
 <div>
   <% if user_signed_in? %>
     <strong><%= link_to 'Voltar', my_bookings_path %></strong>
@@ -29,7 +43,7 @@
       <%= f.text_field :payment_method %>
       <%= f.submit "Realizar Check out" %>
     <% end %>
-  <% else %>
+  <% elsif !owner_signed_in? && !user_signed_in? %>
     <strong><%= link_to 'Voltar', lodge_bookings_path %></strong>
   <% end %>
 </div>

@@ -1,0 +1,12 @@
+<h1>Avalie sua Estadia</h1>
+  
+  <% if @review.errors.any? %>
+  <p>Verifique o(s) erro(s) abaixo:</p>
+    <ul> 
+      <% @review.errors.full_messages.each do |msg| %>
+      <li><%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+<%= render 'form' %>

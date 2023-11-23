@@ -27,15 +27,15 @@ describe 'Owner sees bookings of their lodge' do
                                guests: 2, room: room, user: user)
     allow(SecureRandom).to receive(:alphanumeric).and_return('12345678')
 
-     #Act
-     login_as owner 
-     visit root_path 
-     click_on 'Reservas'
-     click_on booking1.code
-     click_on 'Confirmar check in'
+    #Act
+    login_as owner 
+    visit root_path 
+    click_on 'Reservas'
+    click_on booking1.code
+    click_on 'Confirmar check in'
      
-     #Assert
-     expect(page).to have_content 'Check-in realizado.'
+    #Assert
+    expect(page).to have_content 'Check-in realizado.'
   end
 
   it 'and actual check in time is registered' do
@@ -63,16 +63,16 @@ describe 'Owner sees bookings of their lodge' do
                                guests: 2, room: room, user: user)
     allow(SecureRandom).to receive(:alphanumeric).and_return('12345678')
 
-     #Act
-     login_as owner 
-     visit root_path 
-     click_on 'Reservas'
-     click_on booking1.code
-     click_on 'Confirmar check in'
-     click_on booking1.code
+    #Act
+    login_as owner 
+    visit root_path 
+    click_on 'Reservas'
+    click_on booking1.code
+    click_on 'Confirmar check in'
+    click_on booking1.code
      
-     #Assert
-     expect(page).to have_content 'Check in efetuado às:'
+    #Assert
+    expect(page).to have_content 'Check in efetuado às:'
   end
 
   it 'and sees only active stays' do

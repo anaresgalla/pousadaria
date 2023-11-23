@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @room = @booking.room
     @lodge = @room.lodge
-    @total_price = calculate_total_price(@room, @booking.check_in, @booking.check_out).to_f
+    @total_price = calculate_special_price(@room, @booking.check_in, @booking.check_out).to_f
   end 
 
   def new
@@ -29,7 +29,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_attributes)
     @room = @booking.room
     @lodge = @booking.room.lodge   
-    @total_price = calculate_total_price(@room, @booking.check_in, @booking.check_out).to_f
+    @total_price = calculate_special_price(@room, @booking.check_in, @booking.check_out).to_f
     flash.now[:notice] = 'O quarto está disponível.'
     session[:redirect_after_sign_in] = availability_lodge_room_path(@booking.room.lodge, @booking.room, @booking)
   end  
@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
     @room = @booking.room
     session[:room] = @room.id
     @lodge = @booking.room.lodge   
-    @total_price = calculate_total_price(@room, @booking.check_in, @booking.check_out).to_f
+    @total_price = calculate_special_price(@room, @booking.check_in, @booking.check_out).to_f
   end
 
   def save_booking
@@ -70,6 +70,23 @@ class BookingsController < ApplicationController
     end
   end 
 
+  def check_out_booking
+    @booking = Booking.find(params[:id])
+   
+    if @booking.active?
+      @booking.update!(
+        check_out: Time.current,
+        status: :completed,
+        actual_check_out_time: Time.now.strftime('%H:%M'),
+        payment_method: params[:payment_method],
+        total_price: @booking.calculate_total
+      )
+      redirect_to @booking, notice: "Check out realizado com sucesso"
+    else
+      redirect_to @booking, alert: "Não foi possível realizar o check-out"
+    end
+  end
+
   def cancel_booking
     @booking = Booking.find(params[:id])
     @room = @booking.room
@@ -89,9 +106,9 @@ class BookingsController < ApplicationController
     @active_stays = current_owner.lodge.bookings.where(status: Booking.statuses[:active]).order(created_at: :desc)
   end
   
-  private
+  private 
 
-  def calculate_total_price(room, start_date, end_date)
+  def calculate_special_price(room, start_date, end_date)
     nights = (end_date - start_date).to_i
     @special_pricings = SpecialPricing.all.where(room_id: @room.id)
     special_pricing = @special_pricings.find do |sp|
@@ -110,6 +127,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:check_in, :check_out, :guests)
+    params.require(:booking).permit(:check_in, :check_out, :guests, :payment_method, :actual_check_out_time, :actual_check_in_time)
   end
 end

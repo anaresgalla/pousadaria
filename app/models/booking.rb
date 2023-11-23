@@ -16,8 +16,27 @@ class Booking < ApplicationRecord
     check_in_time >= Time.zone.now + 7.days
   end
 
-  private
+  def calculate_total
+    total_cost = 0
+  
+    booking_range = if check_out
+                      limit = room.lodge.check_out
+                      actual_check_out_time = self.actual_check_out_time || Time.current
+                      range_end = (actual_check_out_time.hour >= limit.hour || (actual_check_out_time.hour == limit.hour && actual_check_out_time.min >= limit.min)) ? check_out.to_date : check_out.to_date - 1
+                      check_in..range_end
+                    else
+                      check_in...end_date
+                    end
+  
+    booking_range.each do |date|
+      total_cost += room.special_pricings.find { |price| date.between?(price.start_date, price.end_date) }&.price || room.standard_overnight.to_i
+    end
+  
+    total_cost
+  end
 
+  private
+  
   def check_in_date_within_limit
     return unless check_in_changed? && check_in.present? && status == :canceled
     if check_in - Time.zone.now < cancellation_limit
@@ -34,14 +53,7 @@ class Booking < ApplicationRecord
   def overlapping
     result = true
     booked = {}
-    bookings = Booking.where(status: [0, 5]).pluck(:check_in, :check_out)
-
-    # Booking.pluck(:check_in, :check_out).each do |date_range|
-    #     (date_range.first..date_range.second).each do |date| 
-    #         booked[date] = true
-    #     end
-    #end
-    
+    bookings = Booking.where(status: [0, 5]).pluck(:check_in, :check_out)  
     bookings.each do |date_range|
       (date_range.first..date_range.second).each do |date|
         booked[date] = true

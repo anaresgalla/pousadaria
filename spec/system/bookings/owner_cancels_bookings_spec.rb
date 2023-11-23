@@ -21,7 +21,7 @@ describe 'Owner cancels a booking' do
                         closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', 
                         vacant: 'Disponível', lodge: lodge)
     user = User.create!(name: 'Ana', email: 'ana@email.com', password: '123456', cpf: '27111653025')
-    booking = Booking.create!(check_in: 2.days.ago, check_out: 15.days.from_now, 
+    booking = Booking.create!(check_in: 3.days.ago, check_out: 15.days.from_now, 
                                guests: 2, room: room, user: user)
     allow(SecureRandom).to receive(:alphanumeric).and_return('12345678')
 

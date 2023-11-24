@@ -1,5 +1,14 @@
 class ReviewsController < ApplicationController
 
+  def index
+    if owner_signed_in? 
+      @lodge = current_owner.lodge
+    else
+      @lodge = Lodge.find_by(params[:lodge_id])
+    end
+    @reviews = @lodge.reviews
+  end
+
   def new
     @booking = Booking.find(params[:booking_id])
     @room = @booking.room
@@ -19,6 +28,13 @@ class ReviewsController < ApplicationController
       flash.now[:alert] = 'Não foi possível registrar a avaliação.'
       render :new
     end
+  end
+
+  def reply
+    @booking = Booking.find(params[:booking_id])
+    @review = @booking.review
+    @review.update(reply: params[:reply])
+    redirect_to @booking, notice: 'Resposta enviada!'
   end
 
   private 

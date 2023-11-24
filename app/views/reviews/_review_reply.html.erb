@@ -1,0 +1,11 @@
+<% if @review.reply.present? %>
+  <div>
+  <strong>Resposta do Proprietário:</strong> <%= @review.reply %>
+  </div>
+<% elsif current_owner %>
+  <%= form_with(url: reply_booking_review_path(@booking, @review)) do |f| %>
+    <%= f.label :reply, 'Responder comentário:' %>
+    <%= f.text_area :reply %>
+    <%= f.submit 'Enviar' %>
+  <% end %>
+<% end %>

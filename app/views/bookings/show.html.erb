@@ -24,8 +24,9 @@
 
 <div>
   <% if @review.present? %>
-    <strong>Nota:</strong> <%= @review.rating %>
+    <strong>Nota (0 - 5):</strong> <%= @review.rating %>
     <strong>Comentário:</strong> <%= @review.comment %>
+    <%= render partial: 'reviews/review_reply' %>
   <% end %>
 </div>
 

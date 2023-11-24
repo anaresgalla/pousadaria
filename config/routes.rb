@@ -23,10 +23,15 @@ Rails.application.routes.draw do
         get 'confirmation', to:'bookings#confirmation', on: :member 
         post 'save_booking', to:'bookings#save_booking', on: :member         
     end
+    resources :reviews, only: [:index]
   end
 
   resources :bookings, only: [:index, :show] do
     get 'active', on: :collection
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:new, :create] do
+      post 'reply', on: :member
+    end
   end
+
+  resources :reviews, only: [:index]
 end

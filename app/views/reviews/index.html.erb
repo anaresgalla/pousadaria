@@ -1,0 +1,20 @@
+<h2>Avaliações</h2>
+
+<% @reviews.each do |review| %>
+  <dl>
+    <% if current_owner %>
+      <dt>Reserva:</dt>
+      <dd><%= link_to review.booking.code, booking_path(review.booking) %></dd>
+    <% end %>
+    <dt>Nome do Hóspede:</dt>
+    <dd><%= review.booking.user.name %></dd>
+    <dt>Nota:</dt>
+    <dd><%= review.rating %></dd>
+    <dt>Comentário:</dt>
+    <dd><%= review.comment %></dd>
+    <dt>Resposta:</dt>
+    <dd><%= review.reply %></dd>
+  </dl>
+<% end %>
+
+<%= link_to 'Voltar', root_path %>

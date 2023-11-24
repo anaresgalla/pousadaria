@@ -10,7 +10,7 @@ class Lodge < ApplicationRecord
   has_many :rooms
   validates_uniqueness_of :owner_id
   has_many :bookings, through: :rooms
-
+  has_many :reviews, through: :bookings
 
   def status_translation
     I18n.t("activerecord.attributes.lodge.status.#{status}")

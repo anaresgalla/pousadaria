@@ -2,13 +2,16 @@
   <h2> Pousadas Disponíveis</h2> 
     <% if owner_signed_in? %>
       <div> 
-        <strong><%= link_to('Cadastrar Pousada', new_lodge_path) %></strong>
+        <strong><%= link_to 'Cadastrar Pousada', new_lodge_path %></strong>
       </div>
       <div> 
-        <strong><%= link_to('Reservas',lodge_bookings_path) %></strong>
+        <strong><%= link_to 'Reservas',lodge_bookings_path %></strong>
       </div>
       <div> 
         <strong><%= link_to 'Estadias Ativas', active_stays_path %></strong>
+      </div>
+      <div> 
+        <strong><%= link_to 'Avaliações', reviews_path %></strong>
       </div>
     <% end %>
 

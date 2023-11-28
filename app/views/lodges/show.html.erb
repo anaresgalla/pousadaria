@@ -1,6 +1,11 @@
 <section >
   <h1><%= @lodge.name %></h1>
-      <h2><%= @lodge.description %></h3>
+      <h3><%= @lodge.description %></h3>
+      <% if @average_rating.present? %>
+        <h3>Nota média: <%= @average_rating %></h3>
+      <% else %>
+        <h3>Não possui avaliações ainda.</h3>
+      <% end %>
         <div>
           <dl>
             <dt><strong>Nome:</strong></dt> 
@@ -35,6 +40,20 @@
             <dd><%= @lodge.payment_method %></dd>
             <dt><strong>Políticas de Uso:</strong></dt> 
             <dd><%= @lodge.policies %></dd>
+            
+            <div>
+            <% if @recent_reviews.present? %>
+              <p><strong>Últimas Avaliações: </p></strong>
+              <% @recent_reviews.each do |review| %>
+                <%= render review %>
+              <% end %>
+              <p><strong><%= link_to('Ver todas as avaliações', lodge_reviews_path(@lodge)) %></p></strong>
+            <% else %>
+              <p><strong>Últimas Avaliações: </p></strong>
+              <p>Ainda não há avaliações.</p>
+            <% end %>
+            </div>
+            
             <% if @lodge.rooms.any? %>
               <h4>Quartos Disponíveis:</h4>
               <ul>
@@ -47,12 +66,14 @@
             <% end %>
           </dl>
         </div>
+        
         <div>
           <% if current_owner == @lodge.owner %>
             <strong><%= link_to('Editar', edit_lodge_path(@lodge.id))%></strong>
             <strong><%= link_to('Cadastrar Quarto', new_lodge_room_path(@lodge.id))%></strong>
           <% end %>
         </div>
+       
         <div>
           <strong><%= link_to('Página Inicial', root_path)%></strong>
         </div>

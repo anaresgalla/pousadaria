@@ -3,8 +3,9 @@ class LodgesController < ApplicationController
   before_action :redirect_owner_to_lodge_registration, only: [:show, :edit, :update]
  
   def show
-    @lodge = Lodge.find(params[:id])
     @rooms = @lodge.rooms.where(vacant: true)
+    @average_rating = @lodge.average
+    @recent_reviews = @lodge.reviews.order(created_at: :desc).limit(3)
   end 
 
   def new 

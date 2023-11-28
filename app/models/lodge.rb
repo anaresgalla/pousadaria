@@ -15,4 +15,8 @@ class Lodge < ApplicationRecord
   def status_translation
     I18n.t("activerecord.attributes.lodge.status.#{status}")
   end
+
+  def average
+    bookings.joins(:review).average('rating')&.round(1)
+  end
 end

@@ -34,7 +34,7 @@
       <ul>
         <% @recent_lodges.each do |rl| %>
           <div>
-            <h4><%= link_to(rl.name, lodge_path(rl.id)) %>, <%= rl.city %></h4>
+            <h4><%= link_to(rl.name, lodge_path(rl.id)) %><br> <%= rl.city %><br> Nota média: <%= rl.average %></h4>
           </div>
         <% end %>
       </ul>
@@ -42,7 +42,7 @@
       <ul>
         <% @other_lodges.each do |ol| %>
           <div>
-            <h4><%= link_to(ol.name, lodge_path(ol.id)) %>, <%= ol.city %></h4>
+            <h4><%= link_to(ol.name, lodge_path(ol.id)) %><br> <%= ol.city %><br> Nota média: <%= ol.average %></h4>
           </div>
         <% end %>
       </ul>

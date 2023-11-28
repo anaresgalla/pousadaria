@@ -38,7 +38,7 @@ describe 'Owner sees reviews' do
      
       #Assert
       expect(page).to have_link booking.code
-      expect(page).to have_content 'Nota: 5'
+      expect(page).to have_content 'Nota (0-5): 5'
       expect(page).to have_content 'Excelente pousada!'
     end
   end

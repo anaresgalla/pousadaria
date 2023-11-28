@@ -4,9 +4,9 @@ class ReviewsController < ApplicationController
     if owner_signed_in? 
       @lodge = current_owner.lodge
     else
-      @lodge = Lodge.find_by(params[:lodge_id])
+      @lodge = Lodge.find(params[:lodge_id])
     end
-    @reviews = @lodge.reviews
+    @reviews = @lodge.reviews.order(created_at: :desc)
   end
 
   def new

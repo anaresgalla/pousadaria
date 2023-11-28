@@ -6,13 +6,13 @@
       <dt>Reserva:</dt>
       <dd><%= link_to review.booking.code, booking_path(review.booking) %></dd>
     <% end %>
-    <dt>Nome do Hóspede:</dt>
+    <dt><strong>Nome do Hóspede:</strong></dt>
     <dd><%= review.booking.user.name %></dd>
-    <dt>Nota:</dt>
+    <dt><strong>Nota (0-5):</strong></dt>
     <dd><%= review.rating %></dd>
-    <dt>Comentário:</dt>
+    <dt><strong>Comentário:</strong></dt>
     <dd><%= review.comment %></dd>
-    <dt>Resposta:</dt>
+    <dt><strong>Resposta do Proprietário:</strong></dt>
     <dd><%= review.reply %></dd>
   </dl>
 <% end %>

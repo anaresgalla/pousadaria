@@ -36,6 +36,22 @@ class Booking < ApplicationRecord
     total_cost
   end
 
+  def availability(room)
+    date_range = check_in..check_out
+    total_price = 0
+    stay_days = 0
+    date_range.each do |day|
+        room.special_pricings.each do |sp|
+            if day.between?(sp.start_date, sp.end_date) == true
+               total_price = total_price + sp.price
+               stay_days += 1
+            end
+        end
+    end
+    total_regular_price = date_range.count - stay_days
+    final_price = total_price + (total_regular_price.to_i * room.standard_overnight.to_i) 
+  end
+
   private
   
   def check_in_date_within_limit

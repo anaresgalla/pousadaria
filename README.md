@@ -18,6 +18,7 @@ In a separate terminal shell, make a *curl* request or use *postman*
 ### List of Active Lodges
 
 Method: GET
+```sh
 
 # Index
 > curl -X GET "http://localhost:3000/api/v1/lodges" | json_pp
@@ -77,9 +78,9 @@ Method: GET
       "id" : 6
    }
 ]
-
+```
 ### Specific Lodge
-
+```sh
 # Show
 
 > curl -X GET "http://localhost:3000/api/v1/lodges/6" | json_pp
@@ -107,10 +108,11 @@ Method: GET
    "country" : "Brasil",
    "address" : "Avenida Independência, 458"
 }
-
+```
 
 ### Lists Rooms in a Lodge
 
+```sh
 # Successfully
 > curl -X GET "http://localhost:3000/api/v1/lodges/6/rooms" | json_pp
 > [
@@ -132,11 +134,13 @@ Method: GET
       "safe" : false
    }, ...
 ]
-
+```
 ## Checks Availability 
 
+```sh
 # Successfully
 >  curl -X GET "http://localhost:3000/api/v1/lodges/check_availability?id=1&start_date=2023-12-01&end_date=2023-12-05&guests=2" | json_pp
 > {
    "total_price" : 625
   }
+```

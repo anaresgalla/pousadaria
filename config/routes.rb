@@ -37,7 +37,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :lodges, only: [:show, :index] 
+      resources :lodges, only: [:show, :index] do 
+        resources :rooms, shallow: true, only: [:index]
+        
+        get 'check_availability', on: :collection
+      end 
     end
   end
 end

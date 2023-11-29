@@ -19,4 +19,11 @@ class Lodge < ApplicationRecord
   def average
     bookings.joins(:review).average('rating')&.round(1)
   end
+
+  def generate_show_json 
+    average = self.average.to_f
+    average = '' if average == 0.0
+    attributes.except('cnpj', 'corporate_name', 'owner_id', 'created_at', 'updated_at')
+              .merge(average: average)
+  end
 end

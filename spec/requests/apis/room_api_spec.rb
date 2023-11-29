@@ -33,8 +33,8 @@ describe 'Room API' do
       expect(response.status).to eq 200 
       expect(response.content_type).to include 'application/json'
       json_response = JSON.parse(response.body)
-      expect(json_response.first["name"]).to eq('Pérola Negra')
-      expect(json_response.second["name"]).to eq('Boitatá')
+      expect(json_response.first['name']).to eq('Pérola Negra')
+      expect(json_response.second['name']).to eq('Boitatá')
       expect(json_response).not_to eq('Iemanjá')
       expect(json_response.length).to eq 2
       expect(json_response.first.keys).not_to include('created_at')
@@ -73,7 +73,7 @@ describe 'Room API' do
       allow(Lodge).to receive(:find).and_raise(ActiveRecord::ConnectionNotEstablished)
       
       #Act
-      get "/api/v1/lodges/1/rooms"
+      get '/api/v1/lodges/1/rooms'
       
       #Assert
       expect(response).to have_http_status 500

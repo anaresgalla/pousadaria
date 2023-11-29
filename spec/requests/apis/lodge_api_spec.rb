@@ -76,7 +76,7 @@ describe 'Lodge API' do
                               payment_method: "Cartão de débito, Dinheiro e Pix", 
                               policies: 'Silêncio a partir das 22h. Proibido visitas.', owner: owner2)
       #Act
-      get "/api/v1/lodges"
+      get '/api/v1/lodges'
 
       #Assert
       expect(response.status).to eq 200 
@@ -116,7 +116,7 @@ describe 'Lodge API' do
       search_params = {name: 'Pousada'}
       
       #Act
-      get "/api/v1/lodges/", params: search_params
+      get '/api/v1/lodges/', params: search_params
 
       #Assert
       expect(response.status).to eq 200 
@@ -130,7 +130,7 @@ describe 'Lodge API' do
     it 'return empty if there is no lodge' do
       #Arrange
       #Act
-      get "/api/v1/lodges"
+      get '/api/v1/lodges'
 
       #Assert
       expect(response.status).to eq 200 
@@ -144,7 +144,7 @@ describe 'Lodge API' do
       allow(Lodge).to receive(:all).and_raise(ActiveRecord::ConnectionNotEstablished)
       
       #Act
-      get "/api/v1/lodges"
+      get '/api/v1/lodges'
       
       #Assert
       expect(response).to have_http_status 500
@@ -188,9 +188,10 @@ describe 'Lodge API' do
       expect(response.status).to eq 200 
       expect(response.content_type).to include 'application/json'
       json_response = JSON.parse(response.body)
-      expect(json_response["name"]).to eq('Pousada do Mar')
-      expect(json_response["city"]).to eq('Marataízes')
-      expect(json_response["average"]).to eq 4.0
+      expect(json_response['name']).to eq('Pousada do Mar')
+      expect(json_response['city']).to eq('Marataízes')
+      expect(json_response['email']).to eq('pousadadomar@gmail.com')
+      expect(json_response['average']).to eq 4.0
       expect(json_response.keys).not_to include('created_at')
       expect(json_response.keys).not_to include('updated_at')
     end
@@ -201,6 +202,38 @@ describe 'Lodge API' do
       get '/api/v1/lodges/999999'
       #Assert
       expect(response.status).to eq 404
+    end
+
+    it 'sees the info of a lodge with no ratings' do
+      #Arrange
+      owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', 
+                            password: '123456')     
+      lodge = Lodge.create(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', 
+                           neighborhood: 'Coqueiros', city: 'Marataízes', state: 'ES', 
+                           country: 'Brasil', zip_code: '12345-985', 
+                           description: 'Pousada em frente à praia', bedrooms: 5, 
+                           max_guests: 12, pets: 'Sim', disabled_facilities: 'Menu em Braile', 
+                           check_in: '15:00', check_out: '12:00', status: 'Ativa', 
+                           email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
+                           corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', 
+                           payment_method: "Cartão de crédito, Pix", 
+                           policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner) 
+      room = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', 
+                          area: '15 m²', max_guests: 2, standard_overnight: '150,00 BRL', 
+                          bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
+                          closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', 
+                          vacant: 'Disponível', lodge: lodge)        
+
+      #Act
+      get "/api/v1/lodges/#{lodge.id}"
+
+      #Assert
+      expect(response.status).to eq 200 
+      expect(response.content_type).to include 'application/json'
+      json_response = JSON.parse(response.body)     
+      expect(json_response['name']).to eq 'Pousada do Mar'     
+      expect(json_response.keys).not_to include 'owner_id'
+      expect(json_response['average']).to eq ''
     end
   end
 end 

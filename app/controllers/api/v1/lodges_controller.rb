@@ -17,7 +17,6 @@ class Api::V1::LodgesController < Api::V1::ApiController
 
   def check_availability
     room = Room.find(params[:id])
-    #booking = Booking.new
     booking = Booking.new(check_in: params[:start_date],
                           check_out: params[:end_date],
                           guests: params[:guests],

@@ -1,6 +1,6 @@
 class Booking < ApplicationRecord
   before_validation :generate_code, on: :create
-  validates :check_in, :check_out, :guests, presence: true #:code,
+  validates :check_in, :check_out, :guests, presence: true
   validate :verify_number_of_guests
   validate :overlapping, on: :create
   belongs_to :room
@@ -11,8 +11,6 @@ class Booking < ApplicationRecord
   
   def can_be_cancelled?
     return false unless check_in.is_a?(Date)
-
-    # Convertendo check_in_date para um objeto Time considerando a meia-noite no fuso horário atual
     check_in_time = check_in.to_time.in_time_zone(Time.zone)
     check_in_time >= Time.zone.now + 7.days
   end
@@ -49,7 +47,7 @@ class Booking < ApplicationRecord
         end
     end
     total_regular_price = date_range.count - stay_days
-    final_price = total_price + (total_regular_price.to_i * room.standard_overnight.to_i) 
+    total_price = total_price + (total_regular_price.to_i * room.standard_overnight.to_i) 
   end
 
   private

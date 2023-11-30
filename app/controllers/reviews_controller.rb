@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :set_booking, only:[:new, :create, :reply]
 
   def index
     if owner_signed_in? 
@@ -10,17 +11,14 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @booking = Booking.find(params[:booking_id])
     @room = @booking.room
     @lodge = @room.lodge
     @review = Review.new(booking: @booking)
   end
 
   def create
-    @booking = Booking.find(params[:booking_id])
     @review = Review.new(review_params)
     @review.booking = @booking
-
     if @review.save
       redirect_to @booking, notice: 'Avaliação enviada com sucesso.'
     else
@@ -31,13 +29,16 @@ class ReviewsController < ApplicationController
   end
 
   def reply
-    @booking = Booking.find(params[:booking_id])
     @review = @booking.review
     @review.update(reply: params[:reply])
     redirect_to @booking, notice: 'Resposta enviada!'
   end
 
   private 
+
+  def set_booking
+    @booking = Booking.find(params[:booking_id])
+  end
 
   def review_params
     params.require(:review).permit(:rating, :comment, :reply)

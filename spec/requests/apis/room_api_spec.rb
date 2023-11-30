@@ -17,13 +17,13 @@ describe 'Room API' do
                             payment_method: "Cartão de crédito, Pix", 
                             policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
       room1 = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', area: '15', max_guests: 2,
-                           standard_overnight: '150,00 BRL', bathroom: true, balcony: true, ac: true, tv: true, 
+                           standard_overnight: '150,00', bathroom: true, balcony: true, ac: true, tv: true, 
                            closet: true, disabled_facilities: true, safe: false, vacant: true, lodge: lodge)
       room2 = Room.create!(name: 'Iemanjá', description: 'Quarto com praia reservada', area: '20', max_guests: 4,
-                           standard_overnight: '350,00 BRL', bathroom: true, balcony: true, ac: true, tv: true, 
+                           standard_overnight: '350,00', bathroom: true, balcony: true, ac: true, tv: true, 
                            closet: true, disabled_facilities: true, safe: true, vacant: false, lodge: lodge)
       room3 = Room.create!(name: 'Boitatá', description: 'Quarto com os fundos para a mata', area: '15', max_guests: 3,
-                           standard_overnight: '180,00 BRL', bathroom: true, balcony: true, ac: true, tv: true, 
+                           standard_overnight: '180,00', bathroom: true, balcony: true, ac: true, tv: true, 
                            closet: true, disabled_facilities: false, safe: false, vacant: true, lodge: lodge)
       
       #Act

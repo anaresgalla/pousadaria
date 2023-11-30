@@ -18,7 +18,7 @@ RSpec.describe SpecialPricing, type: :model do
                               payment_method: "Cartão de crédito, Pix", 
                               policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
         room = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', 
-                            area: '15 m²', max_guests: 2, standard_overnight: '150,00 BRL', 
+                            area: '15 m²', max_guests: 2, standard_overnight: '150,00', 
                             bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
                             closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', 
                             vacant: 'Sim', lodge: lodge)
@@ -49,7 +49,7 @@ RSpec.describe SpecialPricing, type: :model do
                               payment_method: "Cartão de crédito, Pix", 
                               policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
         room = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', 
-                            area: '15 m²', max_guests: 2, standard_overnight: '150,00 BRL', 
+                            area: '15 m²', max_guests: 2, standard_overnight: '150,00', 
                             bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
                             closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', 
                             vacant: 'Sim', lodge: lodge)
@@ -81,7 +81,7 @@ RSpec.describe SpecialPricing, type: :model do
                               payment_method: "Cartão de crédito, Pix", 
                               policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
         room = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', 
-                            area: '15 m²', max_guests: 2, standard_overnight: '150,00 BRL', 
+                            area: '15 m²', max_guests: 2, standard_overnight: '150,00', 
                             bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
                             closet: true, disabled_facilities: 'Sim', safe: 'Não', 
                             vacant: 'Sim', lodge: lodge)
@@ -110,7 +110,7 @@ RSpec.describe SpecialPricing, type: :model do
                               payment_method: "Cartão de crédito, Pix", 
                               policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
         room = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', 
-                            area: '15 m²', max_guests: 2, standard_overnight: '150,00 BRL',
+                            area: '15 m²', max_guests: 2, standard_overnight: '150,00',
                             bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
                             closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', 
                             vacant: 'Sim', lodge: lodge)
@@ -140,7 +140,7 @@ RSpec.describe SpecialPricing, type: :model do
                               payment_method: "Cartão de crédito, Pix", 
                               policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
         room = Room.create!(name: 'Pérola Negra', description: 'Quarto de frente para o mar', 
-                            area: '15 m²', max_guests: 2, standard_overnight: '150,00 BRL', 
+                            area: '15 m²', max_guests: 2, standard_overnight: '150,00', 
                             bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
                             closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', 
                             vacant: 'Sim', lodge: lodge)

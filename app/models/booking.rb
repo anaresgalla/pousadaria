@@ -17,7 +17,6 @@ class Booking < ApplicationRecord
 
   def calculate_total
     total_cost = 0
-  
     booking_range = if check_out
                       limit = room.lodge.check_out
                       actual_check_out_time = self.actual_check_out_time || Time.current
@@ -26,11 +25,9 @@ class Booking < ApplicationRecord
                     else
                       check_in...end_date
                     end
-  
-    booking_range.each do |date|
+      booking_range.each do |date|
       total_cost += room.special_pricings.find { |price| date.between?(price.start_date, price.end_date) }&.price || room.standard_overnight.to_i
     end
-  
     total_cost
   end
 

@@ -1,8 +1,9 @@
 class BookingsController < ApplicationController
   before_action :set_room, only: [:new, :create]
+  before_action :booking_attributes, only: [:availability, :confirmation, :save_booking]
+  before_action :set_booking, only: [:show, :check_in_booking, :check_out_booking, :cancel_booking]
     
   def show
-    @booking = Booking.find(params[:id])
     @room = @booking.room
     @lodge = @room.lodge
     @total_price = calculate_special_price(@room, @booking.check_in, @booking.check_out).to_f
@@ -26,8 +27,6 @@ class BookingsController < ApplicationController
   end
   
   def availability
-    booking_attributes = session[:booking_attributes]
-    @booking = Booking.new(booking_attributes)
     @room = @booking.room
     @lodge = @booking.room.lodge   
     @total_price = calculate_special_price(@room, @booking.check_in, @booking.check_out).to_f
@@ -36,8 +35,6 @@ class BookingsController < ApplicationController
   end  
 
   def confirmation
-    booking_attributes = session[:booking_attributes]
-    @booking = Booking.new(booking_attributes)
     @room = @booking.room
     session[:room] = @room.id
     @lodge = @booking.room.lodge   
@@ -45,8 +42,6 @@ class BookingsController < ApplicationController
   end
 
   def save_booking
-    booking_attributes = session[:booking_attributes]
-    @booking = Booking.new(booking_attributes)
     @booking.user = current_user
     if @booking.save     
       redirect_to my_bookings_path, notice: 'Reserva feita com sucesso!'
@@ -62,7 +57,6 @@ class BookingsController < ApplicationController
   end 
 
   def check_in_booking
-    @booking = Booking.find(params[:id])
     if @booking.check_in <= Date.current
       @booking.update!(check_in: Time.zone.now, status: :active, actual_check_in_time: Time.now.strftime('%H:%M'))
       redirect_to lodge_bookings_path, notice: 'Check-in realizado.'
@@ -72,8 +66,6 @@ class BookingsController < ApplicationController
   end 
 
   def check_out_booking
-    @booking = Booking.find(params[:id])
-   
     if @booking.active?
       @booking.update!(
         check_out: Time.current,
@@ -89,7 +81,6 @@ class BookingsController < ApplicationController
   end
 
   def cancel_booking
-    @booking = Booking.find(params[:id])
     @room = @booking.room
     if current_user == @booking.user
       @booking.canceled! if @booking.can_be_cancelled?
@@ -109,6 +100,11 @@ class BookingsController < ApplicationController
   
   private 
 
+  def booking_attributes
+    booking_attributes = session[:booking_attributes]
+    @booking = Booking.new(booking_attributes)
+  end 
+
   def calculate_special_price(room, start_date, end_date)
     nights = (end_date - start_date).to_i
     @special_pricings = SpecialPricing.all.where(room_id: @room.id)
@@ -117,6 +113,10 @@ class BookingsController < ApplicationController
     end
     nightly_price = special_pricing ? special_pricing.price : room.standard_overnight.to_i
     nightly_price * nights
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:id])
   end
 
   def set_room
@@ -128,6 +128,7 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:check_in, :check_out, :guests, :payment_method, :actual_check_out_time, :actual_check_in_time)
+    params.require(:booking).permit(:check_in, :check_out, :guests, :payment_method, 
+                                    :actual_check_out_time, :actual_check_in_time)
   end
 end

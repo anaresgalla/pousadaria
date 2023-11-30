@@ -6,16 +6,42 @@
 
 ## Pousadaria
 
-This project was developed during TreinaDev 11 program. 
-It is a room renting app for logdes. It can be used by guests and lodge owners. 
+Por: Ana Resgalla, 2023
 
-Note the default port `3000`
+Este projeto foi desenvolvido durante o TreinaDev 11, programa oferecido pela Campus Code. 
 
-In a separate terminal shell, make a *curl* request or use *postman*
+Pousadaria é uma app para que pessoas possam procurar e reservar quartos em pousadas disponíveis por todo o Brasil.
+Tanto proprietários de estabelecimentos quando hóspedes podem se beneficiar da app. 
+Além disso, usuários não registrados também têm acesso a algumas informações sobre as pousadas e os quartos.
 
-## Endpoints
+### Ações de Proprietários
+- Registrar pousadas e quartos e preencher informações sobre ambos (limite de 01 pousada por proprietário).
+- Gerenciar reservas.
+- Estabelecer preços especiais de diárias nos períodos que determinar.
+- Gerenciar Check-Ins e Check-Outs.
+- Responder avaliações de usuários,
+entre outras.
 
-### List of Active Lodges
+### Ações de Clientes
+- Pesquisar por pousadas em todo o Brasil.
+- Visualizar informações sobre pousadas ativas e seus quartos.
+- Checar a disponibilidade de um quarto em determinado período.
+- Realizar reservas.
+- Avaliar estabelecimentos,
+entre outras.
+
+Versões utilizadas:
+
+Ruby: 3.2.1
+
+Rails: 7.1.1
+
+Default port: `3000`
+Em um terminal, utilize *curl* ou utiize *postman*.
+
+## Endpoints API/v1
+
+### Lista de Pousadas Ativas
 
 Method: GET
 ```sh
@@ -49,7 +75,7 @@ Method: GET
    }, ...
 ]
 
-# Index with Search
+# Index com Pesquisa
 
 > curl -X GET "http://localhost:3000/api/v1/lodges?name=Jam" | json_pp
 >[
@@ -79,8 +105,9 @@ Method: GET
    }
 ]
 ```
-### Specific Lodge
+### Pousada Específica 
 ```sh
+
 # Show
 
 > curl -X GET "http://localhost:3000/api/v1/lodges/6" | json_pp
@@ -110,10 +137,11 @@ Method: GET
 }
 ```
 
-### Lists Rooms in a Lodge
+### Listar Quartos em uma Pousada
 
 ```sh
-# Successfully
+# Com sucesso
+
 > curl -X GET "http://localhost:3000/api/v1/lodges/6/rooms" | json_pp
 > [
    {
@@ -123,7 +151,7 @@ Method: GET
       "ac" : true,
       "description" : "Quarto com varanda",
       "balcony" : true,
-      "standard_overnight" : "120,00 BRL",
+      "standard_overnight" : "120,00",
       "max_guests" : 4,
       "tv" : true,
       "disabled_facilities" : true,
@@ -135,10 +163,10 @@ Method: GET
    }, ...
 ]
 ```
-## Checks Availability 
+### Checar Disponibilidade
 
 ```sh
-# Successfully
+# Com sucesso
 >  curl -X GET "http://localhost:3000/api/v1/lodges/check_availability?id=1&start_date=2023-12-01&end_date=2023-12-05&guests=2" | json_pp
 > {
    "total_price" : 625

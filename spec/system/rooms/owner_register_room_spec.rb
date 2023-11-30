@@ -51,7 +51,7 @@ describe 'Owner registers a new room' do
     fill_in 'Descrição', with: 'Quarto saída para o quintal'
     fill_in 'Área', with: '10 m²'
     fill_in 'Máximo de Hóspedes', with: '4'
-    fill_in 'Diária Padrão', with: '100 BRL'
+    fill_in 'Diária Padrão', with: 'R$ 100,00'
     click_on 'Enviar'
 
     #Assert

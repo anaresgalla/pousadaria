@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   get 'active_stays', to: 'bookings#active_stays', as: :active_stays
 
   resources :lodges, only: [:show, :new, :create, :edit, :update, :search] do
+    delete 'remove_picture', to: 'lodges#remove_picture', on: :member
     resources :rooms, only: [:show, :new, :create, :edit, :update] do
+      delete 'remove_picture', to: 'rooms#remove_picture', on: :member
       resources :special_pricings, only: [:new, :create]
       resources :bookings, only: [:new, :create, :edit, :update]
         get 'availability', to:'bookings#availability', on: :member

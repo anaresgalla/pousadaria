@@ -52,6 +52,10 @@
     <%= f.text_field :standard_overnight %>
   </div>
   <div>
+    <%= f.label :pictures, 'Fotos' %>
+    <%= f.file_field :pictures, multiple: true %>
+  </div>
+  <div>
     <%= f.submit 'Enviar' %>
   </div>
 <% end %>

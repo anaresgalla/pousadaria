@@ -84,6 +84,10 @@
     <%= f.text_area :policies %>
   </div>
   <div>
+    <%= f.label :pictures, 'Fotos' %>
+    <%= f.file_field :pictures, multiple: true %>
+  </div>
+  <div>
     <%= f.submit 'Enviar' %>
   </div>
 <% end %>

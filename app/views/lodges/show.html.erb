@@ -10,6 +10,21 @@
           <dl>
             <dt><strong>Nome:</strong></dt> 
             <dd><%= @lodge.name %></dd>
+            <div>
+              <% if @lodge.pictures.attached? %>
+                <div class="photo-gallery">
+                  <h3>Galeria de fotos</h3>
+                  <% @lodge.pictures.each do |picture| %>
+                    <%= image_tag(picture, size: "250x150") %>
+                    <% if current_owner == @lodge.owner %>
+                      <%= button_to 'Excluir', remove_picture_lodge_path(@lodge.id), params: { picture_id: picture.id },
+                            method: :delete,
+                            class: 'btn btn-danger btn-sm' %>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
             <dt><strong>Endereço:</strong></dt> 
             <dd><%= @lodge.address %></dd> 
             <dd><%= @lodge.city %>, <%= @lodge.neighborhood %></dd>

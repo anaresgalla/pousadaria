@@ -1,5 +1,5 @@
 class LodgesController < ApplicationController
-  before_action :set_lodge, only: [:show, :edit, :update]
+  before_action :set_lodge, only: [:show, :edit, :update, :remove_picture]
   before_action :redirect_owner_to_lodge_registration, only: [:show, :edit, :update]
  
   def show
@@ -14,6 +14,9 @@ class LodgesController < ApplicationController
 
   def create     
     @lodge = Lodge.new(lodge_params)
+    if params[:lodge][:pictures].present?
+      @lodge.pictures.attach(params[:lodge][:pictures])
+    end
     @lodge.owner = current_owner
     if @lodge.save     
       redirect_to root_path, notice: 'Pousada cadastrada com sucesso!'
@@ -27,18 +30,27 @@ class LodgesController < ApplicationController
   end
 
   def update
-    if @lodge.update(lodge_params)
+    @lodge.assign_attributes(lodge_params) 
+    if params[:lodge][:pictures].present?
+      @lodge.pictures.attach(params[:lodge][:pictures])
+    end
+    if @lodge.save
       redirect_to lodge_path(@lodge.id), notice: 'Pousada atualizada com sucesso!'
     else 
       flash.now[:notice] = 'Não foi possível atualizar a pousada.'
       render 'edit'
-    end 
+    end
   end 
 
   def city
     @city = params[:city]
     lodge_city = Lodge.where(city: @city).pluck(:city)
     @available_lodges = Lodge.where(status: 'Ativa').where(city: lodge_city).order(:name)
+  end
+
+  def remove_picture
+    @lodge.pictures.find_by(id: params[:picture_id]).purge
+    redirect_to lodge_path(@lodge.id), notice: 'Foto removida com sucesso.'
   end
 
   private 

@@ -15,7 +15,10 @@ describe 'User sees details of a lodge' do
                      corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', 
                      payment_method: "Cartão de crédito, Pix", 
                      policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
-
+    l.pictures.attach(io: File.open('spec/images/room.jpg'),
+                          filename: 'room.jpg', content_type: 'image/jpg')
+    l.save
+    
     #Act
     visit root_path
     click_on 'Pousada do Mar'
@@ -25,6 +28,7 @@ describe 'User sees details of a lodge' do
     expect(page).to have_content 'Endereço: Avenida Beira Mar, 1500'
     expect(page).to have_content 'E-mail: pousadadomar@gmail.com'
     expect(page).to have_content 'Número de quartos: 5'
+    expect(page).to have_selector "img[src$='room.jpg']"
   end 
   
   it 'and does not see CNPJ and corporate name' do

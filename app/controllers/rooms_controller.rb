@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show, :edit, :update]
-  before_action :set_lodge, only: [:show, :new]
+  before_action :set_room, only: [:show, :edit, :update, :remove_picture]
+  before_action :set_lodge, only: [:show, :new, :create]
   before_action :redirect_owner_to_lodge_registration
   
   def show
@@ -12,9 +12,11 @@ class RoomsController < ApplicationController
     @room = @lodge.rooms.new
   end
 
-  def create   
-    @lodge = Lodge.find_by(owner_id: current_owner.id)  
+  def create       
     @room = Room.new(room_params)
+    if params[:room][:pictures].present?
+      @room.pictures.attach(params[:room][:pictures])
+    end
     @room.lodge = @lodge
     if @room.save     
       redirect_to lodge_room_path(@lodge, @room), notice: 'Quarto cadastrado com sucesso!'
@@ -28,13 +30,23 @@ class RoomsController < ApplicationController
   end
 
   def update
-    if @room.update(room_params)
-      redirect_to lodge_room_path(@room.id), notice: 'Quarto atualizado com sucesso!'
+    @room.assign_attributes(room_params) 
+
+    if params[:room][:pictures].present?
+      @room.pictures.attach(params[:room][:pictures])
+    end
+    if @room.save
+      redirect_to lodge_room_path(@room.lodge, @room), notice: 'Quarto atualizado com sucesso!'
     else 
       flash.now[:notice] = 'Não foi possível atualizar o quarto.'
       render 'edit'
     end 
   end 
+
+  def remove_picture
+    @room.pictures.find_by(id: params[:picture_id]).purge
+    redirect_to lodge_room_path(@room.lodge, @room), notice: 'Foto removida com sucesso.'
+  end
  
   private 
 

@@ -101,6 +101,30 @@ RSpec.describe Lodge, type: :model do
         #Assert: 
         expect(result).to eq false 
       end   
+
+      it 'false when photo is not of the supported format' do
+        #Arrange: 
+        owner = Owner.create!(name: 'Carla Mendonça', email: 'carsampa@gmail.com', 
+                              password: '123456')
+        l = Lodge.create(name: 'Pousada do Mar', address: 'Avenida Beira Mar, 1500', 
+                         neighborhood: 'Coqueiros', city: 'Marataízes', state: 'ES', 
+                         country: 'Brasil', zip_code: '12345-985', description: 'Pousada em frente à praia', 
+                         bedrooms: 5, max_guests: 12, pets: 'Sim', disabled_facilities: 'Menu em Braile', 
+                         check_in: '15:00', check_out: '12:00', status: 'Ativa', 
+                         email: 'pousadadomar@gmail.com', phone_number: '28985647114', 
+                         corporate_name: 'Almeida e Filhos LTDA', cnpj: '08945909000124', 
+                         payment_method: "Cartão de crédito, Pix", 
+                         policies: 'Proibido fumar no local. Silêncio a partir das 22h.', owner: owner)
+        l.pictures.attach(io: File.open('spec/images/img.gif'),
+                         filename: 'img.gif', content_type: 'image/gif')
+        l.save
+
+        #Act:
+        l.valid?
+        
+        #Assert: 
+        expect(l.errors[:pictures]).to include 'Formatos permitidos: jpg, jpeg e png.'
+      end   
     end 
   end
 end

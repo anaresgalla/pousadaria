@@ -49,6 +49,9 @@ describe 'User sees the rooms of a lodge' do
                         bathroom: 'Sim', balcony: 'Sim', ac: 'Sim', tv: 'Sim', 
                         closet: 'Sim', disabled_facilities: 'Sim', safe: 'Não', 
                         vacant: 'Disponível', lodge: lodge)
+    room.pictures.attach(io: File.open('spec/images/room.jpg'),
+                        filename: 'room.jpg', content_type: 'image/jpg')
+    room.save
     special_pricing = SpecialPricing.create!(start_date: 2.day.ago, end_date: 2.day.from_now, 
                                              price: 100, room: room)
 
@@ -62,6 +65,7 @@ describe 'User sees the rooms of a lodge' do
     expect(page).to have_content 'Banheiro: Sim'
     expect(page).to have_content 'Área: 15 m²' 
     expect(page).to have_content 'Diária Padrão: R$ 100,00'
+    expect(page).to have_selector "img[src$='room.jpg']"
     expect(page).not_to have_content 'Preço Especial'
   end 
 

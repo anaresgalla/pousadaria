@@ -40,6 +40,21 @@
           </dl>
         </div>
         <div>
+          <% if @room.pictures.attached? %>
+            <div class="photo-gallery">
+              <h3>Galeria de fotos</h3>
+              <% @room.pictures.each do |picture| %>
+                <%= image_tag(picture, size: "250x150") %>
+                <% if current_owner == @lodge.owner %>
+                  <%= button_to 'Excluir', remove_picture_lodge_room_path(@room.id), params: { picture_id: picture.id },
+                        method: :delete,
+                        class: 'btn btn-danger btn-sm' %>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div>
           <strong><%= link_to('Reservar', new_lodge_room_booking_path(@room.id, @room))%></strong>
         </div>                     
         <div>
